@@ -5,8 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
-        Title="ApplicentsDetailsWindow" Height="450" Width="800">
+        Title="AYE"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Height="450"
+        Width="800"
+        MinHeight="450"
+        MinWidth="800">
     <Grid>
-        
+        <Image Source="/фон.png"
+               Stretch="Fill"
+               Margin="0,0,150,0"/>
+        <Image Source="/рабочая область 2.png"
+               Margin="0,0,0,10"/>
+
+        <Label Style="{StaticResource basicText}"
+               Content="Аттестат"
+               FontSize="40"
+               Foreground="White"
+               Margin="75, 30, 0, 0"/>
+
+        <Label Style="{StaticResource basicText}"
+               Content="Номер аттестата"
+               Margin="45, 110, 0, 0"/>
+
+        <TextBox Style="{StaticResource roundedTextBox}"
+                 Margin="190, 10, 70, 200"/>
+
+
     </Grid>
 </Window>

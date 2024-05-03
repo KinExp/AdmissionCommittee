@@ -4,6 +4,33 @@
              xmlns:local="clr-namespace:Admission_Committee"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ControlTemplate TargetType="Button" x:Key="roundedButton">
+            <Border x:Name="buttonBorder"
+                    CornerRadius="20"
+                    BorderBrush="Transparent"
+                    BorderThickness="1"
+                    Background="Black"
+                    TextBlock.Foreground="White"
+                    TextBlock.FontFamily="Arial Black"
+                    TextBlock.FontSize="14"
+                    Cursor="Hand"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}">
+                <ContentControl HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter TargetName="buttonBorder" Property="TextBlock.Foreground" Value="Orange"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter TargetName="buttonBorder" Property="Background" Value="White"/>
+                    <Setter TargetName="buttonBorder" Property="TextBlock.Foreground" Value="Black"/>
+                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="Black"/>
+                    <Setter TargetName="buttonBorder" Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

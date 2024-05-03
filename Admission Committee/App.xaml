@@ -5,16 +5,16 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ControlTemplate TargetType="Button" x:Key="roundedButton">
-            <Border x:Name="buttonBorder"
+            <Border x:Name="ButtonBorder"
                     CornerRadius="20"
                     BorderBrush="Transparent"
                     BorderThickness="1"
                     Background="Black"
                     TextBlock.Foreground="White"
                     TextBlock.FontFamily="Arial Black"
-                    TextBlock.FontSize="14"
+                    TextBlock.FontSize="16"
                     Cursor="Hand"
-                    Height="{TemplateBinding Height}"
+                    Height="40"
                     Width="{TemplateBinding Width}">
                 <ContentControl HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
@@ -22,15 +22,53 @@
             </Border>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsMouseOver" Value="true">
-                    <Setter TargetName="buttonBorder" Property="TextBlock.Foreground" Value="Orange"/>
+                    <Setter TargetName="ButtonBorder" Property="TextBlock.Foreground" Value="Orange"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="true">
-                    <Setter TargetName="buttonBorder" Property="Background" Value="White"/>
-                    <Setter TargetName="buttonBorder" Property="TextBlock.Foreground" Value="Black"/>
-                    <Setter TargetName="buttonBorder" Property="BorderBrush" Value="Black"/>
-                    <Setter TargetName="buttonBorder" Property="Cursor" Value="Hand"/>
+                    <Setter TargetName="ButtonBorder" Property="Background" Value="White"/>
+                    <Setter TargetName="ButtonBorder" Property="TextBlock.Foreground" Value="Black"/>
+                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="Black"/>
+                    <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
+
+        <Style TargetType="TextBox" x:Key="roundedTextBox">
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Padding" Value="7"/>
+            <Setter Property="BorderBrush" Value="LightGray"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="TextBoxBorder"
+                                CornerRadius="20"
+                                BorderBrush="LightGray"
+                                BorderThickness="2"
+                                Background="White"
+                                Height="40"
+                                Width="{TemplateBinding Width}">
+                            <ScrollViewer x:Name="PART_ContentHost"
+                                          HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter TargetName="TextBoxBorder" Property="BorderBrush" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Label" x:Key="basicText">
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
     </Application.Resources>
 </Application>

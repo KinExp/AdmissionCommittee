@@ -5,8 +5,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Авторизация"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Height="440"
+        Width="350"
+        MinHeight="440"
+        MinWidth="350">
+    <Grid Height="Auto"
+          Width="Auto">
+        <Image Source="фон.png"
+               Stretch="Fill"/>
+        <Image Source="рабочая область 1.png"
+               Stretch="Fill"/>
+        <Image Source="логотип.png"
+               Width="220"
+               Height="50"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="-10, 20, 0, 0"/>
+        <Button Width="25"
+                Height="25"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="295, 15, 15, 0"
+                Background="Transparent"
+                BorderThickness="0"
+                Click="Close_Click">
+            <StackPanel>
+                <Image Source="закрыть.png"
+                       Stretch="Fill"/>
+            </StackPanel>
+        </Button>
+        <Label Style="{StaticResource basicText}"
+               FontWeight="Bold"
+               FontSize="28"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="-20, 100, 0, 0"
+               Content="Авторизация"/>
+        <Label Style="{StaticResource basicText}"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="-180, 160, 0, 0"
+               Content="Логин"/>
+        <TextBox Style="{StaticResource roundedTextBox}"
+                 Width="220"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Top"
+                 Margin="-20, 190, 0, 0"/>
+        <Label Style="{StaticResource basicText}"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="-180, 230, 0, 0"
+               Content="Пароль"/>
+        <TextBox Style="{StaticResource roundedTextBox}"
+                 Width="220"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Top"
+                 Margin="-20, 260, 0, 0"/>
+        <Button Template="{StaticResource roundedButton}"
+                Width="160"
+                Content="Войти"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="-20, 330, 0, 0"/>
     </Grid>
 </Window>

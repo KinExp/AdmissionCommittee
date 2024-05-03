@@ -109,5 +109,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="фон.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="рабочая область 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="логотип.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="закрыть.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

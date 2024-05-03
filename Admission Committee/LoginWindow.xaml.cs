@@ -26,5 +26,11 @@ namespace Admission_Committee
         {
             InitializeComponent();
         }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+            // Переделать стиль при нажатии
+        }
     }
 }

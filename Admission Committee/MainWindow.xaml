@@ -5,8 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Height="600" Width="1000">
     <Grid>
-        
+        <Image Source="/фон.png" 
+               Stretch="Fill">
+        </Image>
+
+        <Image Source="/рабочая область 2.png"
+               Stretch="Fill">
+        </Image>
+
+        <Grid Margin="56,36,68,30">
+
+            <Image Source="/логотип.png" 
+                   Margin="0,-2,462,425"
+                   Stretch="Uniform">
+            </Image>
+
+            <Image Source="/close.png" 
+                   Margin="828,0,0,470"
+                   Stretch="Uniform">
+            </Image>
+
+            <TabControl Margin="0,116,108,75">
+                <TabItem Header="Абитуренты">
+                    Первая вкладка
+                </TabItem>
+                <TabItem Header="Заявления">
+                    Вторая вкладка
+                </TabItem>
+                <TabItem Header="Специальности">
+                    Третья вкладка
+                </TabItem>
+            </TabControl>
+
+            <Button x:Name="changeButton" 
+                    Template ="{StaticResource roundedButton}"
+                    Content="Изменить"
+                    Margin="438,434,296,0" />
+                
+            <Button x:Name="deleteButton" 
+                    Template ="{StaticResource roundedButton}"
+                    Content="Удалить"  
+                    Margin="627,434,108,0" />
+                
+            
+
+        </Grid>
+
     </Grid>
 </Window>

@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
         Height="600" Width="1000">
+    <Window.Resources>
+        
+    </Window.Resources>
     <Grid>
         <Image Source="/фон.png" 
                Stretch="Fill">
@@ -27,14 +30,14 @@
                    Stretch="Uniform">
             </Image>
 
-            <TabControl Margin="0,116,108,75">
-                <TabItem Header="Абитуренты">
+            <TabControl Margin="0,116,108,75" BorderBrush="White">
+                <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
                     Первая вкладка
                 </TabItem>
-                <TabItem Header="Заявления">
+                <TabItem Header="Заявления" Style="{StaticResource TabControlCreativeStyle}">
                     Вторая вкладка
                 </TabItem>
-                <TabItem Header="Специальности">
+                <TabItem Header="Специальности" Style="{StaticResource TabControlCreativeStyle}">
                     Третья вкладка
                 </TabItem>
             </TabControl>
@@ -42,14 +45,14 @@
             <Button x:Name="changeButton" 
                     Template ="{StaticResource roundedButton}"
                     Content="Изменить"
-                    Margin="438,434,296,0" />
-                
+                    Margin="438,428,296,0" />
+
             <Button x:Name="deleteButton" 
                     Template ="{StaticResource roundedButton}"
                     Content="Удалить"  
                     Margin="627,434,108,0" />
-                
-            
+
+
 
         </Grid>
 

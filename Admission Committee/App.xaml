@@ -25,9 +25,8 @@
                     <Setter TargetName="ButtonBorder" Property="TextBlock.Foreground" Value="Orange"/>
                 </Trigger>
                 <Trigger Property="IsPressed" Value="true">
-                    <Setter TargetName="ButtonBorder" Property="Background" Value="White"/>
-                    <Setter TargetName="ButtonBorder" Property="TextBlock.Foreground" Value="Black"/>
-                    <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="Black"/>
+                    <Setter TargetName="ButtonBorder" Property="Background" Value="Grey"/>
+                    <Setter TargetName="ButtonBorder" Property="TextBlock.Foreground" Value="Orange"/>
                     <Setter TargetName="ButtonBorder" Property="Cursor" Value="Hand"/>
                 </Trigger>
             </ControlTemplate.Triggers>
@@ -69,6 +68,12 @@
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontFamily" Value="Arial"/>
             <Setter Property="FontSize" Value="16"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="headerText">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+            <Setter Property="FontSize" Value="24"/>
         </Style>
     </Application.Resources>
 </Application>

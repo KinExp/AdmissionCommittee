@@ -5,32 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
-        Height="600" Width="1000">
+        Height="800" Width="1150">
     <Window.Resources>
-        
+
     </Window.Resources>
     <Grid>
-        <Image Source="/фон.png" 
-               Stretch="Fill">
+        <Image Source="/фон.png" Stretch="Fill">
         </Image>
 
-        <Image Source="/рабочая область 2.png"
-               Stretch="Fill">
+        <Image Source="/рабочая область 2.png" Stretch="Fill">
         </Image>
 
-        <Grid Margin="56,36,68,30">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.36*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="0.55*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+            </Grid.RowDefinitions>
 
-            <Image Source="/логотип.png" 
-                   Margin="0,-2,462,425"
-                   Stretch="Uniform">
-            </Image>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="3.8*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="0.6*"/>
+            </Grid.ColumnDefinitions>
 
-            <Image Source="/close.png" 
-                   Margin="828,0,0,470"
-                   Stretch="Uniform">
-            </Image>
+            <Image Source="/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" />
 
-            <TabControl Margin="0,116,108,75" BorderBrush="White">
+            <Button Grid.Row="1" Grid.Column="3" Background="Transparent" BorderThickness="0">
+                <Image Source="/close.png"  Stretch="Uniform"/>
+            </Button>
+
+
+            <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
                     Первая вкладка
                 </TabItem>
@@ -42,19 +52,14 @@
                 </TabItem>
             </TabControl>
 
-            <Button x:Name="changeButton" 
-                    Template ="{StaticResource roundedButton}"
-                    Content="Изменить"
-                    Margin="438,428,296,0" />
-
-            <Button x:Name="deleteButton" 
-                    Template ="{StaticResource roundedButton}"
-                    Content="Удалить"  
-                    Margin="627,434,108,0" />
-
-
-
+            <Viewbox Grid.Row="3" Grid.Column="2">
+                <Grid Width="406" >
+                    <Button x:Name="changeButton" Template ="{StaticResource roundedButton}"
+                        Content="Изменить" Height="40" Width="150" Margin="101,0,155,0" />
+                    <Button x:Name="deleteButton" Template ="{StaticResource roundedButton}"
+                        Content="Удалить" Height="40" Width="150" Margin="256,0,0,0" />
+                </Grid>
+            </Viewbox>
         </Grid>
-
     </Grid>
 </Window>

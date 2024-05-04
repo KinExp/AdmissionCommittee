@@ -111,11 +111,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="close.png" />
-    <Resource Include="логотип.png" />
     <Resource Include="рабочая область 2.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="фон.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="логотип.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

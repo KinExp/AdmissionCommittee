@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
+        WindowStyle="None"
         Height="800" Width="1150">
     <Window.Resources>
 
@@ -12,7 +13,6 @@
     <Grid>
         <Image Source="/фон.png" Stretch="Fill">
         </Image>
-
         <Image Source="/рабочая область 2.png" Stretch="Fill">
         </Image>
 
@@ -33,11 +33,11 @@
                 <ColumnDefinition Width="0.6*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" />
-
-            <Button Grid.Row="1" Grid.Column="3" Background="Transparent" BorderThickness="0">
-                <Image Source="/close.png"  Stretch="Uniform"/>
-            </Button>
+            <Image Source="/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform">
+            </Image>
+            <Image Source="/close.png"  Stretch="Uniform"  HorizontalAlignment="Center"
+                   Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" MouseLeftButtonUp="Image_MouseLeftButtonUp">
+            </Image>
 
 
             <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
@@ -59,7 +59,11 @@
                     <Button x:Name="deleteButton" Template ="{StaticResource roundedButton}"
                         Content="Удалить" Height="40" Width="150" Margin="256,0,0,0" />
                 </Grid>
+
             </Viewbox>
+
         </Grid>
+
     </Grid>
+
 </Window>

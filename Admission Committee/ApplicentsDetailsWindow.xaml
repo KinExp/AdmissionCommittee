@@ -15,23 +15,48 @@
     <Grid>
         <Image Source="/фон.png"
                Stretch="Fill"
-               Margin="0,0,150,0"/>
+               Margin="0, 0, 150, 0"/>
         <Image Source="/рабочая область 2.png"
-               Margin="0,0,0,10"/>
+               Stretch="Fill"
+               Margin="11, -1, 10, 8"/>
 
-        <Label Style="{StaticResource basicText}"
-               Content="Аттестат"
-               FontSize="40"
-               Foreground="White"
-               Margin="75, 30, 0, 0"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.09*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.13*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
 
-        <Label Style="{StaticResource basicText}"
-               Content="Номер аттестата"
-               Margin="45, 110, 0, 0"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.12*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.35*"/>
+                <ColumnDefinition Width="0.35*"/>
+                <ColumnDefinition Width="0.075*"/>
+                <ColumnDefinition Width="0.105*"/>
+            </Grid.ColumnDefinitions>
 
-        <TextBox Style="{StaticResource roundedTextBox}"
-                 Margin="190, 10, 70, 200"/>
+            <Frame x:Name="applicentFrame"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.RowSpan="2"
+                   Grid.ColumnSpan="3"/>
 
+            <Button x:Name="backPage"
+                    Template="{StaticResource roundedButton}"
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Content="Назад"
+                    Click="BackPage_Click"/>
 
+            <Button x:Name="nextPage"
+                    Template="{StaticResource roundedButton}"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Content="Далее"
+                    Click="NextPage_Click"/>
+        </Grid>
     </Grid>
 </Window>

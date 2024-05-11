@@ -55,10 +55,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="SchoolCertificatePage.xaml.cs">
-      <DependentUpon>SchoolCertificatePage.xaml</DependentUpon>
-    </Compile>
     <Page Include="ApplicentsDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConfirmDeleteWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -77,6 +78,9 @@
     <Compile Include="ApplicentsDetailsWindow.xaml.cs">
       <DependentUpon>ApplicentsDetailsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ConfirmDeleteWindow.xaml.cs">
+      <DependentUpon>ConfirmDeleteWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataBase.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
@@ -85,10 +89,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SchoolCertificatePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -120,7 +120,13 @@
     <Resource Include="фон.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="рабочая область 2.png" />
+    <Resource Include="рабочая область 1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="логотип.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="закрыть.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

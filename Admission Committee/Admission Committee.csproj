@@ -119,5 +119,8 @@
   <ItemGroup>
     <Resource Include="логотип.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="обновить.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

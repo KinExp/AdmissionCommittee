@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
         WindowStyle="None"
-        Height="800" Width="1150">
+        Height="800" Width="1150"
+        MinHeight="600" MinWidth="850">
     <Window.Resources>
 
     </Window.Resources>
@@ -20,44 +21,60 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.36*"></RowDefinition>
                 <RowDefinition Height="0.5*"></RowDefinition>
-                <RowDefinition Height="4*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="0.55*"></RowDefinition>
-                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="0.28*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.6*"/>
                 <ColumnDefinition Width="3.8*"/>
-                <ColumnDefinition Width="3*"/>
-                <ColumnDefinition Width="0.6*"/>
-                <ColumnDefinition Width="0.6*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.74*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform">
-            </Image>
-            <Image Source="/close.png"  Stretch="Uniform"  HorizontalAlignment="Center"
-                   Grid.Row="1" Grid.Column="3" VerticalAlignment="Center" MouseLeftButtonUp="Image_MouseLeftButtonUp">
+            <Image Source="/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" 
+                   HorizontalAlignment="Left" VerticalAlignment="Top">
             </Image>
 
+            <Image Source="/close.png"  Stretch="Uniform"  HorizontalAlignment="Right"
+                   Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" MouseLeftButtonUp="Image_MouseLeftButtonUp">
+            </Image>
 
-            <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+            <Image Source="/обновить.png" Grid.Row="3" Grid.Column="4"></Image>
+
+            <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
-                    Первая вкладка
+                    <DataGrid>
+                        
+                    </DataGrid>
                 </TabItem>
                 <TabItem Header="Заявления" Style="{StaticResource TabControlCreativeStyle}">
-                    Вторая вкладка
+                    <DataGrid>
+                        
+                    </DataGrid>
                 </TabItem>
                 <TabItem Header="Специальности" Style="{StaticResource TabControlCreativeStyle}">
-                    Третья вкладка
+                    <DataGrid>
+                        
+                    </DataGrid>
                 </TabItem>
             </TabControl>
 
-            <Viewbox Grid.Row="3" Grid.Column="2">
+            <Viewbox Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
                 <Grid Width="406" >
                     <Button x:Name="changeButton" Template ="{StaticResource roundedButton}"
-                        Content="Изменить" Height="40" Width="150" Margin="101,0,155,0" />
+                        Content="Изменить" Height="40" Width="120" Margin="148,0,138,0">
+                    </Button>
+
                     <Button x:Name="deleteButton" Template ="{StaticResource roundedButton}"
-                        Content="Удалить" Height="40" Width="150" Margin="256,0,0,0" />
+                        Content="Удалить" Height="40" Width="120" Margin="286,0,0,0" />
+                    <Button x:Name="addButton" Template ="{StaticResource roundedButton}"
+                         Content="Добавить" Height="40" Width="120" Margin="10,0,276,0" />
                 </Grid>
 
             </Viewbox>

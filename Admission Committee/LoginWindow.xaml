@@ -51,16 +51,17 @@
                    Grid.Row="1"
                    Grid.RowSpan="2"
                    HorizontalAlignment="Left"
-                   VerticalAlignment="Center"
-                   Margin="5"/>
+                   VerticalAlignment="Top"
+                   Margin="5, 5, 0, 0"/>
 
             <Image Source="закрыть.png"
                    Width="25"
                    Height="25"
                    Grid.Column="4"
                    Grid.Row="1"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Margin="0, 5, 5, 0"
                    Cursor="Hand"
                    MouseLeftButtonUp="Close_Click"/>
 
@@ -111,7 +112,7 @@
                      VerticalAlignment="Center"
                      Text="Пароль"
                      GotFocus="fakePasswordBox_GotFocus"/>
-            
+
             <Button Template="{StaticResource roundedButton}"
                     Width="160"
                     Grid.Column="1"

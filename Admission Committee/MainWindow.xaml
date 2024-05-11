@@ -12,9 +12,9 @@
 
     </Window.Resources>
     <Grid>
-        <Image Source="/фон.png" Stretch="Fill">
+        <Image Source="Resources/фон.png" Stretch="Fill">
         </Image>
-        <Image Source="/рабочая область 2.png" Stretch="Fill">
+        <Image Source="Resources/рабочая область 2.png" Stretch="Fill">
         </Image>
 
         <Grid>
@@ -37,15 +37,15 @@
                 <ColumnDefinition Width="0.74*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" 
+            <Image Source="Resources/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" 
                    HorizontalAlignment="Left" VerticalAlignment="Top">
             </Image>
 
-            <Image Source="/close.png"  Stretch="Uniform"  HorizontalAlignment="Right"
+            <Image Source="Resources/закрыть.png"  Stretch="Uniform"  HorizontalAlignment="Right"
                    Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" MouseLeftButtonUp="Image_MouseLeftButtonUp">
             </Image>
 
-            <Image Source="/обновить.png" Grid.Row="3" Grid.Column="4"></Image>
+            <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="4"></Image>
 
             <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">

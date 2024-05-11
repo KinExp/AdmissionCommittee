@@ -131,13 +131,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="рабочая область 2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="фон.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="закрыть.png" />
+    <Resource Include="Resources\close.png" />
+    <Resource Include="Resources\закрыть.png" />
+    <Resource Include="Resources\логотип.png" />
+    <Resource Include="Resources\обновить.png" />
+    <Resource Include="Resources\рабочая область 2.png" />
+    <Resource Include="Resources\фон.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

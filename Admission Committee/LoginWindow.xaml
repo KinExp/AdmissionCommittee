@@ -5,8 +5,122 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Авторизация"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Height="450"
+        Width="350"
+        MinHeight="450"
+        MinWidth="350">
+    <Grid Height="Auto"
+          Width="Auto">
+        <Image Source="фон.png"
+               Stretch="Fill"/>
+
+        <Image Source="рабочая область 1.png"
+               Stretch="Fill"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.4*"></RowDefinition>
+                <RowDefinition Height="1.35*"></RowDefinition>
+                <RowDefinition Height="1.35*"></RowDefinition>
+                <RowDefinition Height="3.7*"></RowDefinition>
+                <RowDefinition Height="1.1*"></RowDefinition>
+                <RowDefinition Height="1.92*"></RowDefinition>
+                <RowDefinition Height="1.1*"></RowDefinition>
+                <RowDefinition Height="1.92*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.44*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="1.14*"/>
+                <ColumnDefinition Width="2.6*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.15*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="логотип.png"
+                   Width="220"
+                   Height="50"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="2"
+                   Grid.Row="1"
+                   Grid.RowSpan="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Margin="5, 5, 0, 0"/>
+
+            <Image Source="закрыть.png"
+                   Width="25"
+                   Height="25"
+                   Grid.Column="4"
+                   Grid.Row="1"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Margin="0, 5, 5, 0"
+                   Cursor="Hand"
+                   MouseLeftButtonUp="Close_Click"/>
+
+            <Label Style="{StaticResource basicText}"
+                   FontWeight="Bold"
+                   FontSize="28"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="3"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Content="Авторизация"/>
+
+            <TextBox x:Name="loginBox"
+                     Style="{StaticResource roundedTextBox}"
+                     Foreground="Gray"
+                     Width="220"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="4"
+                     Grid.RowSpan="2"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Text="Логин" 
+                     GotFocus="loginBox_GotFocus"
+                     LostFocus="loginBox_LostFocus"/>
+
+            <PasswordBox x:Name="passwordBox"
+                         Style="{StaticResource roundedPasswordBox}"
+                         Width="220"
+                         Grid.Column="1"
+                         Grid.ColumnSpan="3"
+                         Grid.Row="6"
+                         Grid.RowSpan="2"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         LostFocus="passwordBox_LostFocus"/>
+
+            <TextBox x:Name="fakePasswordBox"
+                     Style="{StaticResource roundedTextBox}"
+                     Foreground="Gray"
+                     Width="220"
+                     Grid.Column="1"
+                     Grid.ColumnSpan="3"
+                     Grid.Row="6"
+                     Grid.RowSpan="2"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Text="Пароль"
+                     GotFocus="fakePasswordBox_GotFocus"/>
+
+            <Button Template="{StaticResource roundedButton}"
+                    Width="160"
+                    Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="8"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Войти"/>
+        </Grid>
     </Grid>
 </Window>

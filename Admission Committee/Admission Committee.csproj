@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PersonalDataFirstPage.xaml.cs">
+      <DependentUpon>PersonalDataFirstPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PersonalDataSecondPage.xaml.cs">
+      <DependentUpon>PersonalDataSecondPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SchoolCertificatePage.xaml.cs">
       <DependentUpon>SchoolCertificatePage.xaml</DependentUpon>
     </Compile>
@@ -85,6 +91,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PersonalDataFirstPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PersonalDataSecondPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SchoolCertificatePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +135,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="фон.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="закрыть.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

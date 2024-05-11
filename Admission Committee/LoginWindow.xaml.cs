@@ -26,5 +26,38 @@ namespace Admission_Committee
         {
             InitializeComponent();
         }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void loginBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            loginBox.Foreground = Brushes.Black;
+            if (loginBox.Text == "Логин")
+                loginBox.Text = "";
+        }
+
+        private void loginBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (loginBox.Text == "")
+            {
+                loginBox.Foreground = Brushes.Gray;
+                loginBox.Text = "Логин";
+            }
+        }
+
+        private void fakePasswordBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            fakePasswordBox.Visibility = Visibility.Hidden;
+            passwordBox.Focus();
+        }
+
+        private void passwordBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (passwordBox.Password.ToString() == "")
+                fakePasswordBox.Visibility= Visibility.Visible;
+        }
     }
 }

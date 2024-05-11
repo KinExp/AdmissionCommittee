@@ -24,5 +24,10 @@ namespace Admission_Committee
         {
             InitializeComponent();
         }
+
+        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Close();
+        }
     }
 }

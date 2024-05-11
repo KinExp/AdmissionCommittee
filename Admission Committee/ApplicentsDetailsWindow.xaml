@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
-        Title="ApplicentsDetailsWindow"
+        Title="Данные абитуриента"
         WindowStyle="None"
-        Height="450"
+        WindowStartupLocation="CenterScreen"
+        Height="500"
         Width="800"
-        MinHeight="450"
+        MinHeight="500"
         MinWidth="800">
     <Grid>
         <Image Source="/фон.png"
                Stretch="Fill"
-               Margin="0, 0, 150, 0" />
+               Margin="0, 0, 150, 0"/>
         <Image Source="/рабочая область 2.png"
                Stretch="Fill"
-               Margin="24, 19, 15, 18"/>
+               Margin="11, -1, 10, 8"/>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -34,20 +35,36 @@
                 <ColumnDefinition Width="0.35*"/>
                 <ColumnDefinition Width="0.35*"/>
                 <ColumnDefinition Width="0.075*"/>
-                <ColumnDefinition Width="0.109*"/>
+                <ColumnDefinition Width="0.105*"/>
             </Grid.ColumnDefinitions>
+
+            <Image Grid.Row="1"
+                   Grid.Column="4"
+                   Source="/закрыть.png"
+                   Stretch="Fill"
+                   Height="25"
+                   Width="25"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Top"
+                   Margin="0, 5, 5, 0"
+                   Cursor="Hand"
+                   MouseLeftButtonUp="Image_MouseLeftButtonUp"/>
 
             <Frame x:Name="applicentFrame"
                    Grid.Row="1"
                    Grid.Column="1"
                    Grid.RowSpan="2"
-                   Grid.ColumnSpan="3"/>
+                   Grid.ColumnSpan="3"
+                   NavigationUIVisibility="Hidden"
+                   Panel.ZIndex="2"/>
 
             <Button x:Name="backPage"
                     Template="{StaticResource roundedButton}"
                     Grid.Row="3"
                     Grid.Column="2"
                     Content="Назад"
+                    Visibility="Hidden"
+                    Panel.ZIndex="1"
                     Click="BackPage_Click"/>
 
             <Button x:Name="nextPage"
@@ -55,6 +72,7 @@
                     Grid.Row="3"
                     Grid.Column="3"
                     Content="Далее"
+                    Panel.ZIndex="1"
                     Click="NextPage_Click"/>
         </Grid>
     </Grid>

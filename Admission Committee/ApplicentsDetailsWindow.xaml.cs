@@ -31,17 +31,38 @@ namespace Admission_Committee
             index = 0;
 
             pages.Add(new SchoolCertificatePage());
+            pages.Add(new PersonalDataFirstPage());
+            pages.Add(new PersonalDataSecondPage());
             applicentFrame.Content = pages[index];
         }
 
         private void BackPage_Click(object sender, RoutedEventArgs e)
         {
-
+            if (index > 0)
+            {
+                index--;
+                applicentFrame.Content = pages[index];
+                nextPage.Content = "Далее";
+            }
+            if (index == 0)
+                backPage.Visibility = Visibility.Hidden;
         }
 
         private void NextPage_Click(object sender, RoutedEventArgs e)
         {
+            if (index < pages.Count - 1)
+            {
+                index++;
+                applicentFrame.Content = pages[index];
+                backPage.Visibility = Visibility.Visible;
+            }
+            if (index == pages.Count - 1)
+                nextPage.Content = "Готово";
+        }
 
+        private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Close();
         }
     }
 }

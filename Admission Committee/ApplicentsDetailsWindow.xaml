@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
-        Title="ApplicentsDetailsWindow" Height="450" Width="800">
+        Title="ApplicentsDetailsWindow"
+        WindowStyle="None"
+        Height="450"
+        Width="800"
+        MinHeight="450"
+        MinWidth="800">
     <Grid>
-        
+        <Image Source="/фон.png"
+               Stretch="Fill"
+               Margin="0, 0, 150, 0" />
+        <Image Source="/рабочая область 2.png"
+               Stretch="Fill"
+               Margin="24, 19, 15, 18"/>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.09*"/>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.13*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.12*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="0.35*"/>
+                <ColumnDefinition Width="0.35*"/>
+                <ColumnDefinition Width="0.075*"/>
+                <ColumnDefinition Width="0.109*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame x:Name="applicentFrame"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   Grid.RowSpan="2"
+                   Grid.ColumnSpan="3"/>
+
+            <Button x:Name="backPage"
+                    Template="{StaticResource roundedButton}"
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Content="Назад"
+                    Click="BackPage_Click"/>
+
+            <Button x:Name="nextPage"
+                    Template="{StaticResource roundedButton}"
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Content="Далее"
+                    Click="NextPage_Click"/>
+        </Grid>
     </Grid>
 </Window>

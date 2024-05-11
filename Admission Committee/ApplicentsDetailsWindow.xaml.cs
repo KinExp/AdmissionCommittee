@@ -21,10 +21,27 @@ namespace Admission_Committee
     public partial class ApplicentsDetailsWindow : Window
     {
         DataBase dataBase = new DataBase();
+        List<Page> pages;
+        int index;
 
         public ApplicentsDetailsWindow()
         {
             InitializeComponent();
+            pages = new List<Page>();
+            index = 0;
+
+            pages.Add(new SchoolCertificatePage());
+            applicentFrame.Content = pages[index];
+        }
+
+        private void BackPage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void NextPage_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

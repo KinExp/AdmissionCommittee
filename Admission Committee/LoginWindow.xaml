@@ -14,10 +14,10 @@
         MinWidth="350">
     <Grid Height="Auto"
           Width="Auto">
-        <Image Source="фон.png"
+        <Image Source="Resources/фон.png"
                Stretch="Fill"/>
 
-        <Image Source="рабочая область 1.png"
+        <Image Source="Resources/рабочая область 1.png"
                Stretch="Fill"/>
 
         <Grid>
@@ -43,7 +43,7 @@
                 <ColumnDefinition Width="0.15*"/>
             </Grid.ColumnDefinitions>
 
-            <Image Source="логотип.png"
+            <Image Source="Resources/логотип.png"
                    Width="220"
                    Height="50"
                    Grid.Column="2"
@@ -54,7 +54,7 @@
                    VerticalAlignment="Top"
                    Margin="5, 5, 0, 0"/>
 
-            <Image Source="закрыть.png"
+            <Image Source="Resources/закрыть.png"
                    Width="25"
                    Height="25"
                    Grid.Column="4"

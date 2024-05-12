@@ -131,7 +131,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\close.png" />
     <Resource Include="Resources\закрыть.png" />
     <Resource Include="Resources\логотип.png" />
     <Resource Include="Resources\обновить.png" />

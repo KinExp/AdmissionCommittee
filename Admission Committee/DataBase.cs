@@ -9,9 +9,9 @@ namespace Admission_Committee
 {
     internal class DataBase
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=KINEXP;Initial Catalog=ПриёмнаяКомиссия;Integrated Security=True");
-        //SqlConnection sqlConnection = new SqlConnection(@"Data Source=JUNK;Initial Catalog=ПриёмнаяКомиссия;Integrated Security=True");
         //SqlConnection sqlConnection = new SqlConnection(@"Data Source=KINEXP;Initial Catalog=ПриёмнаяКомиссия;Integrated Security=True");
+        //SqlConnection sqlConnection = new SqlConnection(@"Data Source=JUNK;Initial Catalog=ПриёмнаяКомиссия;Integrated Security=True");
+        SqlConnection sqlConnection = new SqlConnection(@"Data Source=desktop-um1rhp2;Initial Catalog=ПриёмнаяКомиссия;Integrated Security=True");
 
         public void OpenConnection()
         {

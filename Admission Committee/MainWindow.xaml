@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
         WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         Height="800" Width="1150"
         MinHeight="600" MinWidth="850">
     <Window.Resources>
@@ -38,7 +39,8 @@
             <Image Source="Resources/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" 
                    HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Image Source="Resources/закрыть.png"  Stretch="Uniform"  HorizontalAlignment="Right"
-                   Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"/>
+                   Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"
+                   Height="25" Width="25" Margin="0,5,5,0"/>
             <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="4"/>
 
             <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3">
@@ -77,7 +79,7 @@
                     <Button x:Name="deleteButton" Template ="{StaticResource roundedButton}"
                         Content="Удалить" Height="40" Width="120" Margin="286,0,0,0" />
                     <Button x:Name="addButton" Template ="{StaticResource roundedButton}"
-                         Content="Добавить" Height="40" Width="120" Margin="10,0,276,0" />
+                         Content="Добавить" Height="40" Width="120" Margin="10,0,276,0" Click="addButton_Click"/>
                 </Grid>
             </Viewbox>
         </Grid>

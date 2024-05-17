@@ -90,7 +90,7 @@
                      LostFocus="loginBox_LostFocus"/>
 
             <PasswordBox x:Name="passwordBox"
-                         Style="{StaticResource roundedPasswordBox}"
+                         Style="{StaticResource roundedPasswordBox}" 
                          Width="220"
                          Grid.Column="1"
                          Grid.ColumnSpan="3"
@@ -120,7 +120,8 @@
                     Grid.Row="8"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    Content="Войти"/>
+                    Content="Войти"
+                    Click="Button_Click"/>
         </Grid>
     </Grid>
 </Window>

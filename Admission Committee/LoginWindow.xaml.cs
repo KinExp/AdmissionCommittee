@@ -59,5 +59,12 @@ namespace Admission_Committee
             if (passwordBox.Password.ToString() == "")
                 fakePasswordBox.Visibility= Visibility.Visible;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
     }
 }

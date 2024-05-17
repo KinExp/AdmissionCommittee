@@ -31,7 +31,7 @@ namespace Admission_Committee
             tables = new List<string>();
             tables.Add("Абитуриенты");
 
-            RefreshDataGrid(applicantsDataGrid, tables[0]);
+            //RefreshDataGrid(applicantsDataGrid, tables[0]);
 
         }
 
@@ -77,6 +77,12 @@ namespace Admission_Committee
         private void CloseImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Close();
+        }
+
+        private void addButton_Click(object sender, RoutedEventArgs e)
+        {
+            ApplicentsDetailsWindow aplWin = new ApplicentsDetailsWindow();
+            aplWin.ShowDialog();
         }
     }
 }

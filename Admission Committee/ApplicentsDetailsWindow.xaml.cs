@@ -50,14 +50,16 @@ namespace Admission_Committee
 
         private void NextPage_Click(object sender, RoutedEventArgs e)
         {
-            if (index < pages.Count - 1)
+            index++;
+            if (index < pages.Count)
             {
-                index++;
                 applicentFrame.Content = pages[index];
                 backPage.Visibility = Visibility.Visible;
+                if (index == pages.Count - 1)
+                    nextPage.Content = "Готово";
             }
-            if (index == pages.Count - 1)
-                nextPage.Content = "Готово";
+            else
+                Close();
         }
 
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

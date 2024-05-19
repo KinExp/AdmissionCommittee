@@ -34,14 +34,15 @@ namespace Admission_Committee
 
         private void RefreshDataGrid()
         {
-            string sqlQueryApplicents = "SELECT Серия_паспорта, Номер_паспорта, Фамилия, Имя, Отчество, Пол, Дата_рождения, " +
-                                        "Телефон, Название_учебного_заведения, Год_окончания_учебного_заведения, Средний_балл_аттестата FROM Абитуриенты Аб " +
+            string sqlQueryApplicents = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
                                         "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата";
-            string sqlQueryStatements = "SELECT Код_заявления, Фамилия, Имя, Отчество, Название_специальности, З.Уровень_образования, " +
+
+            string sqlQueryStatements = "SELECT Код_заявления, Фамилия, Имя, Отчество, З.Серия_паспорта, З.Номер_паспорта, З.Код_специальности, Название_специальности, З.Уровень_образования, " +
                                         "З.Вариант_обучения, З.Форма_обучения FROM Заявления_на_поступление З " +
                                         "INNER JOIN Абитуриенты А ON А.Серия_паспорта = З.Серия_паспорта AND А.Номер_паспорта = З.Номер_паспорта " +
                                         "INNER JOIN Специальности С ON С.Код_специальности = З.Код_специальности AND С.Уровень_образования = З.Уровень_образования " +
                                         "AND С.Вариант_обучения = З.Вариант_обучения AND С.Форма_обучения = З.Форма_обучения";
+
             string sqlQuerySpecialties = "SELECT * FROM Специальности";
 
             dataBase.OpenConnection();
@@ -67,16 +68,23 @@ namespace Admission_Committee
             dtApplicents.Columns.Add("ThirdName");
             dtApplicents.Columns.Add("Gender");
             dtApplicents.Columns.Add("Birthday");
+            dtApplicents.Columns.Add("Address");
             dtApplicents.Columns.Add("Phone");
             dtApplicents.Columns.Add("School");
             dtApplicents.Columns.Add("YearGraduation");
+            dtApplicents.Columns.Add("СertificateSiries");
+            dtApplicents.Columns.Add("СertificateNumber");
             dtApplicents.Columns.Add("AvarageScore");
+
 
             DataTable dtStatements = new DataTable("Заявления");
             dtStatements.Columns.Add("ID");
             dtStatements.Columns.Add("SecondName");
             dtStatements.Columns.Add("FirstName");
             dtStatements.Columns.Add("ThirdName");
+            dtStatements.Columns.Add("PassportSeries");
+            dtStatements.Columns.Add("PassportNumber");
+            dtStatements.Columns.Add("IdSpecialty");
             dtStatements.Columns.Add("NameSpecialty");
             dtStatements.Columns.Add("Level");
             dtStatements.Columns.Add("Option");

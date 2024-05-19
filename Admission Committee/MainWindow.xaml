@@ -60,9 +60,12 @@
                             <DataGridTextColumn Header="Отчество" Width="100*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding ThirdName}"/>
                             <DataGridTextColumn Header="Пол" Width="35*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Gender}"/>
                             <DataGridTextColumn Header="Дата рождения" Width="95*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Birthday}"/>
+                            <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding Address}"/>
                             <DataGridTextColumn Header="Номер телефона" Width="115*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Phone}"/>
                             <DataGridTextColumn Header="Название школы" Width="200*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding School}"/>
                             <DataGridTextColumn Header="Год окончания" Width="95*" IsReadOnly="True" CanUserResize="False" Binding="{Binding YearGraduation}"/>
+                            <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding СertificateSiries}"/>
+                            <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding СertificateNumber}"/>
                             <DataGridTextColumn Header="Средний балл" Width="90*" IsReadOnly="True" CanUserResize="False" Binding="{Binding AvarageScore}"/>
                         </DataGrid.Columns>
                     </DataGrid>
@@ -79,6 +82,9 @@
                             <DataGridTextColumn Header="Фамилия" Width="100*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding SecondName}"/>
                             <DataGridTextColumn Header="Имя" Width="100*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding FirstName}"/>
                             <DataGridTextColumn Header="Отчество" Width="100*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding ThirdName}"/>
+                            <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding PassportSeries}"/>
+                            <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding PassportNumber}"/>
+                            <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding IdSpecialty}"/>
                             <DataGridTextColumn Header="Название специальности" Width="200*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding NameSpecialty}"/>
                             <DataGridTextColumn Header="Уровень образования" Width="180*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Level}"/>
                             <DataGridTextColumn Header="Вариант обучения" Width="110*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Option}"/>

@@ -8,20 +8,20 @@
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         Height="800" Width="1150"
-        MinHeight="600" MinWidth="850">
+        MinHeight="800" MinWidth="1150">
     <Window.Resources>
 
     </Window.Resources>
     <Grid>
-        <Image Source="Resources/фон.png" Stretch="Fill"/>
-        <Image Source="Resources/рабочая область 2.png" Stretch="Fill"/>
+        <Image Source="Resources/фон.png" Stretch="Fill" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
+        <Image Source="Resources/рабочая область 2.png" Stretch="Fill" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.3*"></RowDefinition>
                 <RowDefinition Height="0.35*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
-                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="2.2*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="0.53*"></RowDefinition>
                 <RowDefinition Height="0.28*"></RowDefinition>
@@ -30,22 +30,23 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.6*"/>
                 <ColumnDefinition Width="3.8*"/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.24*"/>
                 <ColumnDefinition Width="0.5*"/>
-                <ColumnDefinition Width="0.74*"/>
             </Grid.ColumnDefinitions>
 
             <Image Source="Resources/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" 
-                   HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                   HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
             <Image Source="Resources/закрыть.png"  Stretch="Uniform"  HorizontalAlignment="Right"
-                   Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"
+                   Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" MouseLeftButtonDown="CloseImage_MouseLeftButtonDown" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"
                    Height="25" Width="25" Margin="0,5,5,0"/>
-            <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="4"/>
+            <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" MouseLeftButtonUp="RefreshImage_MouseLeftButtonUp"/>
 
-            <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="3">
+            <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
-                    <DataGrid x:Name="applicantsDataGrid" AutoGenerateColumns="False">
+                    <DataGrid x:Name="applicantsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
                         <DataGrid.Resources>
                             <Style TargetType="TextBlock" x:Key="WrapText">
                                 <Setter Property="TextWrapping" Value="Wrap"/>
@@ -54,32 +55,66 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding PassportSeries}"/>
                             <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding PassportNumber}"/>
-                            <DataGridTextColumn Header="Фамилия" Width="Auto" MinWidth="100" MaxWidth="300" Binding="{Binding SecondName}"
-                                                IsReadOnly="True" CanUserResize="False"/>
-                            <DataGridTextColumn Header="Имя" Width="100" IsReadOnly="True" CanUserResize="False" Binding="{Binding FirstName}"/>
-                            <DataGridTextColumn Header="Отчество" Width="100" IsReadOnly="True" CanUserResize="False" Binding="{Binding ThirdName}"/>
-                            <DataGridTextColumn Header="Пол" Width="Auto" IsReadOnly="True" CanUserResize="False" Binding="{Binding Gender}"/>
+                            <DataGridTextColumn Header="Фамилия" Width="95*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding SecondName}"/>
+                            <DataGridTextColumn Header="Имя" Width="95*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding FirstName}"/>
+                            <DataGridTextColumn Header="Отчество" Width="100*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding ThirdName}"/>
+                            <DataGridTextColumn Header="Пол" Width="35*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Gender}"/>
+                            <DataGridTextColumn Header="Дата рождения" Width="95*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Birthday}"/>
+                            <DataGridTextColumn Header="Номер телефона" Width="115*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Phone}"/>
+                            <DataGridTextColumn Header="Название школы" Width="200*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding School}"/>
+                            <DataGridTextColumn Header="Год окончания" Width="95*" IsReadOnly="True" CanUserResize="False" Binding="{Binding YearGraduation}"/>
+                            <DataGridTextColumn Header="Средний балл" Width="90*" IsReadOnly="True" CanUserResize="False" Binding="{Binding AvarageScore}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Заявления" Style="{StaticResource TabControlCreativeStyle}">
-                    <DataGrid x:Name="statementsDataGrid" AutoGenerateColumns="True">
+                    <DataGrid x:Name="statementsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
+                        <DataGrid.Resources>
+                            <Style TargetType="TextBlock" x:Key="WrapText">
+                                <Setter Property="TextWrapping" Value="Wrap"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="Фамилия" Width="100*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding SecondName}"/>
+                            <DataGridTextColumn Header="Имя" Width="100*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding FirstName}"/>
+                            <DataGridTextColumn Header="Отчество" Width="100*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding ThirdName}"/>
+                            <DataGridTextColumn Header="Название специальности" Width="200*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding NameSpecialty}"/>
+                            <DataGridTextColumn Header="Уровень образования" Width="180*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Level}"/>
+                            <DataGridTextColumn Header="Вариант обучения" Width="110*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Option}"/>
+                            <DataGridTextColumn Header="Форма обучения" Width="105*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Form}"/>
+                        </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Специальности" Style="{StaticResource TabControlCreativeStyle}">
-                    <DataGrid x:Name="specialtiesDataGrid" AutoGenerateColumns="True">
+                    <DataGrid x:Name="specialtiesDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
+                        <DataGrid.Resources>
+                            <Style TargetType="TextBlock" x:Key="WrapText">
+                                <Setter Property="TextWrapping" Value="Wrap"/>
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="Уровень образования" Width="180*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Level}"/>
+                            <DataGridTextColumn Header="Название специальности" Width="200*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding NameSpecialty}"/>
+                            <DataGridTextColumn Header="Вариант обучения" Width="110*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Option}"/>
+                            <DataGridTextColumn Header="Форма обучения" Width="105*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Form}"/>
+                            <DataGridTextColumn Header="Количество мест" Width="105*" IsReadOnly="True" CanUserResize="False" Binding="{Binding AmountPlaces}"/>
+                            <DataGridTextColumn Header="Стоимость" Width="85*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Cost}"/>
+                            <DataGridTextColumn Header="Время" Width="110*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Time}"/>
+                        </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
             </TabControl>
 
-            <Viewbox Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2">
+            <Viewbox Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1">
                 <Grid Width="406">
                     <Button x:Name="changeButton" Template ="{StaticResource roundedButton}"
                         Content="Изменить" Height="40" Width="120" Margin="148,0,138,0"/>
                     <Button x:Name="deleteButton" Template ="{StaticResource roundedButton}"
                         Content="Удалить" Height="40" Width="120" Margin="286,0,0,0" />
                     <Button x:Name="addButton" Template ="{StaticResource roundedButton}"
-                         Content="Добавить" Height="40" Width="120" Margin="10,0,276,0" Click="addButton_Click"/>
+                         Content="Добавить" Height="40" Width="120" Margin="10,0,276,0" Click="AddButton_Click"/>
                 </Grid>
             </Viewbox>
         </Grid>

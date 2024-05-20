@@ -148,5 +148,10 @@
   <ItemGroup>
     <Resource Include="Resources\рабочая область 1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Полный экран.png" />
+    <Resource Include="Resources\Свернуть.png" />
+    <Resource Include="Resources\Уменьшить.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

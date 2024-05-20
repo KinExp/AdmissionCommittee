@@ -59,7 +59,7 @@ namespace Admission_Committee
             adapterApplicents.Fill(dataSet.Tables[0]);
             adapterStatements.Fill(dataSet.Tables[1]);
             adapterSpecialties.Fill(dataSet.Tables[2]);
-            
+
             DataTable dtApplicents = new DataTable("Абитуриенты");
             dtApplicents.Columns.Add("PassportSeries");
             dtApplicents.Columns.Add("PassportNumber");
@@ -120,7 +120,7 @@ namespace Admission_Committee
                 dtApplicents.Rows.Add(newRow);
             }
 
-            foreach(DataRow row in dataSet.Tables[1].Rows)
+            foreach (DataRow row in dataSet.Tables[1].Rows)
             {
                 List<string> items = new List<string>();
 
@@ -133,7 +133,7 @@ namespace Admission_Committee
                 dtStatements.Rows.Add(newRow);
             }
 
-            foreach(DataRow row in dataSet.Tables[2].Rows)
+            foreach (DataRow row in dataSet.Tables[2].Rows)
             {
                 List<string> items = new List<string>();
 
@@ -167,7 +167,7 @@ namespace Admission_Committee
             DragMove();
         }
 
-        private void CloseImage_MouseLeftButtonDown (object sender, MouseButtonEventArgs e)
+        private void CloseImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             exit = true;
         }
@@ -176,6 +176,25 @@ namespace Admission_Committee
         {
             if (exit)
                 Close();
+        }
+
+        private void CollapseImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void FullScreenImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Maximized;
+            MaxButton.Visibility = Visibility.Collapsed;
+            MinButton.Visibility = Visibility.Visible;
+        }
+
+        private void MinScreenImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+            MaxButton.Visibility = Visibility.Visible;
+            MinButton.Visibility = Visibility.Collapsed;
         }
     }
 }

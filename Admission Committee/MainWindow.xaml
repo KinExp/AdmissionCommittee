@@ -30,7 +30,9 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.6*"/>
                 <ColumnDefinition Width="3.8*"/>
-                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="4.6*"/>
+                <ColumnDefinition Width="0.3*"/>
+                <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="0.2*"/>
                 <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="0.24*"/>
@@ -40,11 +42,18 @@
             <Image Source="Resources/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" 
                    HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
             <Image Source="Resources/закрыть.png"  Stretch="Uniform"  HorizontalAlignment="Right"
-                   Grid.Row="1" Grid.Column="4" VerticalAlignment="Top" MouseLeftButtonDown="CloseImage_MouseLeftButtonDown" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"
+                   Grid.Row="1" Grid.Column="6" VerticalAlignment="Top" MouseLeftButtonDown="CloseImage_MouseLeftButtonDown" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"
                    Height="25" Width="25" Margin="0,5,5,0"/>
-            <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2" MouseLeftButtonUp="RefreshImage_MouseLeftButtonUp"/>
+            <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" MouseLeftButtonUp="RefreshImage_MouseLeftButtonUp"/>
+            <Image Source="Resources/Полный экран.png" x:Name="MaxButton" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
+                   Height="29" Width="29" Margin="0,3,3,0" MouseLeftButtonUp="FullScreenImage_MouseLeftButtonUp"/>
+            <Image Source="Resources/Уменьшить.png" x:Name="MinButton" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
+                   Height="29" Width="29" Margin="0,3,3,0" Visibility="Hidden" MouseLeftButtonUp="MinScreenImage_MouseLeftButtonUp"/>
+            <Image Source="Resources/Свернуть.png" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top"
+                   Height="29" Width="27" Margin="0,4,5,0" MouseLeftButtonUp="CollapseImage_MouseLeftButtonUp"/>
 
-            <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3">
+
+            <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
                     <DataGrid x:Name="applicantsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
                         <DataGrid.Resources>
@@ -101,8 +110,8 @@
                         </DataGrid.Resources>
                         <DataGrid.Columns>
                             <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding ID}"/>
-                            <DataGridTextColumn Header="Уровень образования" Width="180*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Level}"/>
                             <DataGridTextColumn Header="Название специальности" Width="200*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding NameSpecialty}"/>
+                            <DataGridTextColumn Header="Уровень образования" Width="180*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Level}"/>
                             <DataGridTextColumn Header="Вариант обучения" Width="110*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Option}"/>
                             <DataGridTextColumn Header="Форма обучения" Width="105*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Form}"/>
                             <DataGridTextColumn Header="Количество мест" Width="105*" IsReadOnly="True" CanUserResize="False" Binding="{Binding AmountPlaces}"/>

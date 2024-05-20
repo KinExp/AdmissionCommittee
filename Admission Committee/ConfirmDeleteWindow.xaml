@@ -6,12 +6,11 @@
         xmlns:local="clr-namespace:Admission_Committee"
         mc:Ignorable="d"
         Title="DeleteWindow" 
-        MinHeight="150"
         Height="150"
-        MinWidth="400"
         Width="400"
         WindowStyle="None"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid Background="#FF650E">
         <Grid>
             <Grid.RowDefinitions>
@@ -25,14 +24,16 @@
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
 
-            <Label Style="{StaticResource basicText}"
+            <Label x:Name="windowLabel"
+                   Style="{StaticResource basicText}"
                    FontWeight="Bold"
                    FontSize="22"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
                    Content="Удаление"/>
 
-            <Label Style="{StaticResource basicText}"
+            <Label x:Name="windowText"
+                   Style="{StaticResource basicText}"
                    FontSize="14"
                    Foreground="White"
                    Grid.Column="0"

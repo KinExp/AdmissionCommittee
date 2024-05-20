@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Admission_Committee
 {
@@ -62,9 +63,40 @@ namespace Admission_Committee
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            Close();
+            /*
+            string loginQuerry = $"select * from Авторизация " +
+                                 $"where Логин = '{loginBox.Text}' " +
+                                 $"and Пароль = '{passwordBox.Password}'";
+
+            SqlDataAdapter adapter = new SqlDataAdapter(loginQuerry, dataBase.GetConnection());
+            DataTable dataTable = new DataTable();
+            
+            adapter.Fill(dataTable);
+            
+
+            if (dataTable.Rows.Count == 1)
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+            }
+            */
+            if (loginBox.Text == "admin" && passwordBox.Password == "admin")
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                Close();
+            }
+            else
+            {
+                ConfirmDeleteWindow error = new ConfirmDeleteWindow("Ошибка", "Неверный логин или пароль!", "Ошибка");
+                error.ShowDialog();
+            }
+        }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

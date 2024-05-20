@@ -10,15 +10,16 @@
         WindowStartupLocation="CenterScreen"
         Height="450"
         Width="350"
-        MinHeight="450"
-        MinWidth="350">
+        ResizeMode="NoResize">
     <Grid Height="Auto"
           Width="Auto">
         <Image Source="Resources/фон.png"
-               Stretch="Fill"/>
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
         <Image Source="Resources/рабочая область 1.png"
-               Stretch="Fill"/>
+               Stretch="Fill"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -52,7 +53,8 @@
                    Grid.RowSpan="2"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Top"
-                   Margin="5, 5, 0, 0"/>
+                   Margin="5, 5, 0, 0"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
             <Image Source="Resources/закрыть.png"
                    Width="25"
@@ -73,7 +75,8 @@
                    Grid.Row="3"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   Content="Авторизация"/>
+                   Content="Авторизация"
+                   MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
             <TextBox x:Name="loginBox"
                      Style="{StaticResource roundedTextBox}"

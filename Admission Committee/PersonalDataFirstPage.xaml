@@ -40,8 +40,8 @@
                Grid.Column="0"
                HorizontalAlignment="Left"
                VerticalAlignment="Center"
-               Content="Номер"/>
-        <TextBox x:Name="numberOfPassportTextBox"
+               Content="Серия"/>
+        <TextBox x:Name="seriesOfPassportTextBox"
                  Style="{StaticResource roundedTextBox}"
                  Grid.Row="1"
                  Grid.Column="1"
@@ -53,8 +53,8 @@
                Grid.Column="0"
                HorizontalAlignment="Left"
                VerticalAlignment="Center"
-               Content="Серия"/>
-        <TextBox x:Name="seriesOfPassportTextBox"
+               Content="Номер"/>
+        <TextBox x:Name="numberOfPassportTextBox"
                  Style="{StaticResource roundedTextBox}"
                  Grid.Row="2"
                  Grid.Column="1"

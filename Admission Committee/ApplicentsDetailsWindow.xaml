@@ -15,10 +15,12 @@
     <Grid>
         <Image Source="Resources/фон.png"
                Stretch="Fill"
-               Margin="0, 0, 150, 0"/>
+               Margin="0, 0, 150, 0"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
         <Image Source="Resources/рабочая область 2.png"
                Stretch="Fill"
-               Margin="11, -1, 10, 8"/>
+               Margin="11, -1, 10, 8"
+               MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
 
         <Grid>
             <Grid.RowDefinitions>

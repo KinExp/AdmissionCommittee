@@ -32,14 +32,14 @@
                FontSize="40"
                Foreground="White"
                Margin="5, 0, 0, 0"/>
-
+        
         <Label Style="{StaticResource basicText}"
                Grid.Row="1"
                Grid.Column="0"
                HorizontalAlignment="Left"
                VerticalAlignment="Center"
-               Content="Номер"/>
-        <TextBox x:Name="numberOfSchoolCertificateTextBox"
+               Content="Серия"/>
+        <TextBox x:Name="seriesOfSchoolCertificateTextBox"
                  Style="{StaticResource roundedTextBox}"
                  Grid.Row="1"
                  Grid.Column="1"
@@ -50,8 +50,8 @@
                Grid.Column="0"
                HorizontalAlignment="Left"
                VerticalAlignment="Center"
-               Content="Серия"/>
-        <TextBox x:Name="seriesOfSchoolCertificateTextBox"
+               Content="Номер"/>
+        <TextBox x:Name="numberOfSchoolCertificateTextBox"
                  Style="{StaticResource roundedTextBox}"
                  Grid.Row="2"
                  Grid.Column="1"

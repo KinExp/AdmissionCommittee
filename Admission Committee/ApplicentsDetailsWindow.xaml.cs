@@ -29,7 +29,7 @@ namespace Admission_Committee
         int index;
         DataTable specializations;
 
-        public ApplicentsDetailsWindow(DataRow dataRow = null)
+        public ApplicentsDetailsWindow(DataRowView dataRow = null)
         {
             InitializeComponent();
             pages = new List<Page>();

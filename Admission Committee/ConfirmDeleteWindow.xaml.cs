@@ -19,14 +19,16 @@ namespace Admission_Committee
     /// </summary>
     public partial class ConfirmDeleteWindow : Window
     {
+        string windowType;
         public ConfirmDeleteWindow(string label, string text, string type)
         {
             InitializeComponent();
 
             windowLabel.Content = label;
             windowText.Content = text;
+            windowType = type;
 
-            if (type == "Ошибка")
+            if (windowType == "Ошибка")
             {
                 confirmButton.Visibility = Visibility.Hidden;
                 cancelButton.Content = "ОК";
@@ -40,7 +42,15 @@ namespace Admission_Committee
 
         private void confirmDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            if (windowType == "Удаление")
+            {
+                this.DialogResult = true;
+                Close();
+            }
+            else if (windowType == "Подтверждение выхода")
+            {
+                Application.Current.Shutdown();
+            }    
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

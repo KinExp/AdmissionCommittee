@@ -43,17 +43,17 @@
                    HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
             <Image Source="Resources/закрыть.png"  Stretch="Uniform"  HorizontalAlignment="Right"
                    Grid.Row="1" Grid.Column="6" VerticalAlignment="Top" MouseLeftButtonDown="CloseImage_MouseLeftButtonDown" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"
-                   Height="25" Width="25" Margin="0,5,5,0"/>
-            <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" MouseLeftButtonUp="RefreshImage_MouseLeftButtonUp"/>
+                   Height="25" Width="25" Margin="0,5,5,0" Cursor="Hand"/>
+            <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" MouseLeftButtonUp="RefreshImage_MouseLeftButtonUp" Cursor="Hand"/>
             <Image Source="Resources/Полный экран.png" x:Name="MaxButton" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
-                   Height="29" Width="29" Margin="0,3,3,0" MouseLeftButtonUp="FullScreenImage_MouseLeftButtonUp"/>
+                   Height="29" Width="29" Margin="0,3,3,0" MouseLeftButtonUp="FullScreenImage_MouseLeftButtonUp" Cursor="Hand"/>
             <Image Source="Resources/Уменьшить.png" x:Name="MinButton" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
-                   Height="29" Width="29" Margin="0,3,3,0" Visibility="Hidden" MouseLeftButtonUp="MinScreenImage_MouseLeftButtonUp"/>
+                   Height="29" Width="29" Margin="0,3,3,0" Visibility="Hidden" MouseLeftButtonUp="MinScreenImage_MouseLeftButtonUp" Cursor="Hand"/>
             <Image Source="Resources/Свернуть.png" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top"
-                   Height="29" Width="27" Margin="0,4,5,0" MouseLeftButtonUp="CollapseImage_MouseLeftButtonUp"/>
+                   Height="29" Width="27" Margin="0,4,5,0" MouseLeftButtonUp="CollapseImage_MouseLeftButtonUp" Cursor="Hand"/>
 
 
-            <TabControl  BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <TabControl x:Name="tabControl" BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" SelectionChanged="tabControl_SelectionChanged">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
                     <DataGrid x:Name="applicantsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
                         <DataGrid.Resources>
@@ -125,9 +125,9 @@
             <Viewbox Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1">
                 <Grid Width="406">
                     <Button x:Name="changeButton" Template ="{StaticResource roundedButton}"
-                        Content="Изменить" Height="40" Width="120" Margin="148,0,138,0"/>
+                        Content="Изменить" Height="40" Width="120" Margin="148,0,138,0" Click="ChangeButton_Click"/>
                     <Button x:Name="deleteButton" Template ="{StaticResource roundedButton}"
-                        Content="Удалить" Height="40" Width="120" Margin="286,0,0,0" />
+                        Content="Удалить" Height="40" Width="120" Margin="286,0,0,0" Click="DelButton_Click"/>
                     <Button x:Name="addButton" Template ="{StaticResource roundedButton}"
                          Content="Добавить" Height="40" Width="120" Margin="10,0,276,0" Click="AddButton_Click"/>
                 </Grid>

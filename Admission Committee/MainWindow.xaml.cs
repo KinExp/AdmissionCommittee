@@ -159,6 +159,7 @@ namespace Admission_Committee
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             ApplicentsDetailsWindow aplWin = new ApplicentsDetailsWindow();
+
             aplWin.ShowDialog();
         }
 
@@ -195,6 +196,112 @@ namespace Admission_Committee
             WindowState = WindowState.Normal;
             MaxButton.Visibility = Visibility.Visible;
             MinButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void DelButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (applicantsDataGrid.SelectedItem != null || statementsDataGrid.SelectedItem != null)
+            {
+
+                ConfirmDeleteWindow deleteWindow = new ConfirmDeleteWindow("Удаление", "Вы действительно хотите удалить запись?", "Удаление");
+
+                if (deleteWindow.ShowDialog() == true)
+                {
+                    DataRowView row;
+
+                    if (tabControl.SelectedIndex == 0)
+                        row = (DataRowView)applicantsDataGrid.SelectedItem;
+                    else
+                    {
+                        row = (DataRowView)statementsDataGrid.SelectedItem;
+
+                        string sqlQuery = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
+                                          "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
+                                          $"WHERE Серия_паспорта = {row[4]} AND Номер_паспорта = {row[5]}";
+
+                        dataBase.OpenConnection();
+                        SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+
+                        DataSet ds = new DataSet();
+
+                        adapter.Fill(ds);
+
+                        row = ds.Tables[0].DefaultView[0];
+                    }
+
+                    string sqlQueryApplicant = $"DELETE FROM Решения_приёмной_комиссии WHERE Код_заявления = (SELECT Код_заявления FROM Заявления_на_поступление WHERE Серия_паспорта = {row[0]} AND Номер_паспорта = {row[1]})";
+
+                    dataBase.OpenConnection();
+                    SqlCommand commandApplicant = new SqlCommand(sqlQueryApplicant, dataBase.GetConnection());
+                    commandApplicant.ExecuteNonQuery();
+
+                    sqlQueryApplicant = $"DELETE FROM Заявления_на_поступление WHERE Серия_паспорта = {row[0]} AND Номер_паспорта = {row[1]}";
+
+                    commandApplicant = new SqlCommand(sqlQueryApplicant, dataBase.GetConnection());
+                    commandApplicant.ExecuteNonQuery();
+
+                    sqlQueryApplicant = $"DELETE FROM Абитуриенты WHERE Серия_паспорта = {row[0]} AND Номер_паспорта = {row[1]}";
+
+                    commandApplicant = new SqlCommand(sqlQueryApplicant, dataBase.GetConnection());
+                    commandApplicant.ExecuteNonQuery();
+
+                    sqlQueryApplicant = $"DELETE FROM Аттестаты WHERE Серия_аттестата = {row[11]} AND Номер_аттестата = {row[12]}";
+
+                    commandApplicant = new SqlCommand(sqlQueryApplicant, dataBase.GetConnection());
+                    commandApplicant.ExecuteNonQuery();
+                    dataBase.CloseConnection();
+                    RefreshDataGrid();
+                }
+            }
+        }
+
+        private void ChangeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (applicantsDataGrid.SelectedItem != null || statementsDataGrid.SelectedItem != null)
+            {
+                DataRowView row;
+
+                if (tabControl.SelectedIndex == 0)
+                    row = (DataRowView)applicantsDataGrid.SelectedItem;
+                else
+                {
+                    row = (DataRowView)statementsDataGrid.SelectedItem;
+
+                    string sqlQuery = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
+                                      "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
+                                      $"WHERE Серия_паспорта = {row[4]} AND Номер_паспорта = {row[5]}";
+
+                    dataBase.OpenConnection();
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+
+                    DataSet ds = new DataSet();
+
+                    adapter.Fill(ds);
+
+                    row = ds.Tables[0].DefaultView[0];
+                }
+
+                ApplicentsDetailsWindow aplWin = new ApplicentsDetailsWindow(row);
+
+                aplWin.ShowDialog();
+            }
+        }
+
+        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            switch (tabControl.SelectedIndex)
+            {
+                case 2:
+                    addButton.Visibility = Visibility.Hidden;
+                    changeButton.Visibility = Visibility.Hidden;
+                    deleteButton.Visibility = Visibility.Hidden;
+                    break;
+                default:
+                    addButton.Visibility = Visibility.Visible;
+                    changeButton.Visibility = Visibility.Visible;
+                    deleteButton.Visibility = Visibility.Visible;
+                    break;
+            }
         }
     }
 }

@@ -53,7 +53,7 @@
                    Height="29" Width="27" Margin="0,4,5,0" MouseLeftButtonUp="CollapseImage_MouseLeftButtonUp" Cursor="Hand"/>
 
 
-            <TabControl x:Name="tabControl" BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" SelectionChanged="tabControl_SelectionChanged">
+            <TabControl x:Name="tabControl" BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" SelectionChanged="TabControl_SelectionChanged">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
                     <DataGrid x:Name="applicantsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
                         <DataGrid.Resources>
@@ -127,7 +127,7 @@
                     <Button x:Name="changeButton" Template ="{StaticResource roundedButton}"
                         Content="Изменить" Height="40" Width="120" Margin="148,0,138,0" Click="ChangeButton_Click"/>
                     <Button x:Name="deleteButton" Template ="{StaticResource roundedButton}"
-                        Content="Удалить" Height="40" Width="120" Margin="286,0,0,0" Click="DelButton_Click"/>
+                        Content="Удалить" Height="40" Width="120" Margin="286,0,0,0" Click="DeleteButton_Click"/>
                     <Button x:Name="addButton" Template ="{StaticResource roundedButton}"
                          Content="Добавить" Height="40" Width="120" Margin="10,0,276,0" Click="AddButton_Click"/>
                 </Grid>

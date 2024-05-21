@@ -29,36 +29,37 @@ namespace Admission_Committee
             dataBase = new DataBase();
             exit = false;
 
-            RefreshDataGrid();
+            RefreshDataGrids();
         }
 
-        private void RefreshDataGrid()
+        private void RefreshDataGrids()
         {
-            string sqlQueryApplicents = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
-                                        "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата";
-
-            string sqlQueryStatements = "SELECT Код_заявления, Фамилия, Имя, Отчество, З.Серия_паспорта, З.Номер_паспорта, З.Код_специальности, Название_специальности, З.Уровень_образования, " +
-                                        "З.Вариант_обучения, З.Форма_обучения FROM Заявления_на_поступление З " +
-                                        "INNER JOIN Абитуриенты А ON А.Серия_паспорта = З.Серия_паспорта AND А.Номер_паспорта = З.Номер_паспорта " +
-                                        "INNER JOIN Специальности С ON С.Код_специальности = З.Код_специальности AND С.Уровень_образования = З.Уровень_образования " +
-                                        "AND С.Вариант_обучения = З.Вариант_обучения AND С.Форма_обучения = З.Форма_обучения";
-
-            string sqlQuerySpecialties = "SELECT * FROM Специальности";
-
-            dataBase.OpenConnection();
-
-            SqlDataAdapter adapterApplicents = new SqlDataAdapter(sqlQueryApplicents, dataBase.GetConnection());
-            SqlDataAdapter adapterStatements = new SqlDataAdapter(sqlQueryStatements, dataBase.GetConnection());
-            SqlDataAdapter adapterSpecialties = new SqlDataAdapter(sqlQuerySpecialties, dataBase.GetConnection());
-
             DataSet dataSet = new DataSet();
             dataSet.Tables.Add();
             dataSet.Tables.Add();
             dataSet.Tables.Add();
 
-            adapterApplicents.Fill(dataSet.Tables[0]);
-            adapterStatements.Fill(dataSet.Tables[1]);
-            adapterSpecialties.Fill(dataSet.Tables[2]);
+            string sqlQuery = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
+                                        "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата";
+
+            dataBase.OpenConnection();
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+            adapter.Fill(dataSet.Tables[0]);
+
+            sqlQuery = "SELECT Код_заявления, Фамилия, Имя, Отчество, З.Серия_паспорта, З.Номер_паспорта, З.Код_специальности, Название_специальности, З.Уровень_образования, " +
+                                        "З.Вариант_обучения, З.Форма_обучения FROM Заявления_на_поступление З " +
+                                        "INNER JOIN Абитуриенты А ON А.Серия_паспорта = З.Серия_паспорта AND А.Номер_паспорта = З.Номер_паспорта " +
+                                        "INNER JOIN Специальности С ON С.Код_специальности = З.Код_специальности AND С.Уровень_образования = З.Уровень_образования " +
+                                        "AND С.Вариант_обучения = З.Вариант_обучения AND С.Форма_обучения = З.Форма_обучения";
+
+            adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+            adapter.Fill(dataSet.Tables[1]);
+
+            sqlQuery = "SELECT * FROM Специальности";
+
+            adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+            adapter.Fill(dataSet.Tables[2]);
+            dataBase.CloseConnection();
 
             DataTable dtApplicents = new DataTable("Абитуриенты");
             dtApplicents.Columns.Add("PassportSeries");
@@ -153,7 +154,7 @@ namespace Admission_Committee
 
         private void RefreshImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            RefreshDataGrid();
+            RefreshDataGrids();
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
@@ -161,10 +162,7 @@ namespace Admission_Committee
             ApplicentsDetailsWindow aplWin = new ApplicentsDetailsWindow();
 
             if (aplWin.ShowDialog() == true)
-            {
-                RefreshDataGrid();
-            }
-
+                RefreshDataGrids();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -206,7 +204,7 @@ namespace Admission_Committee
             MinButton.Visibility = Visibility.Collapsed;
         }
 
-        private void DelButton_Click(object sender, RoutedEventArgs e)
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             if (applicantsDataGrid.SelectedItem != null || statementsDataGrid.SelectedItem != null)
             {
@@ -259,7 +257,7 @@ namespace Admission_Committee
                     commandApplicant.ExecuteNonQuery();
                     dataBase.CloseConnection();
 
-                    RefreshDataGrid();
+                    RefreshDataGrids();
                 }
             }
             else
@@ -274,20 +272,23 @@ namespace Admission_Committee
             if (applicantsDataGrid.SelectedItem != null || statementsDataGrid.SelectedItem != null)
             {
                 DataRowView row;
+                string sqlQuery;
+                SqlDataAdapter adapter;
+                DataSet ds;
 
                 if (tabControl.SelectedIndex == 0)
                 {
                     row = (DataRowView)applicantsDataGrid.SelectedItem;
-                    string sqlQuery = "SELECT Аб.*, Ат.Количество_оценок_пять, АТ.Количество_оценок_четыре, Ат.Количество_оценок_три, Ат.Изучаемый_иностранный_язык, " +
+                    sqlQuery = "SELECT Аб.*, Ат.Количество_оценок_пять, АТ.Количество_оценок_четыре, Ат.Количество_оценок_три, Ат.Изучаемый_иностранный_язык, " +
                                   "З.Код_специальности, З.Уровень_образования, З.Вариант_обучения, З.Форма_обучения FROM Абитуриенты Аб " +
                                   "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
                                   "INNER JOIN Заявления_на_поступление З ON З.Серия_паспорта = Аб.Серия_паспорта AND З.Номер_паспорта = Аб.Номер_паспорта " +
                                    $"WHERE Аб.Серия_паспорта = {row[0]} AND Аб.Номер_паспорта = {row[1]}";
 
                     dataBase.OpenConnection();
-                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+                    adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
 
-                    DataSet ds = new DataSet();
+                    ds = new DataSet();
 
                     adapter.Fill(ds);
 
@@ -296,16 +297,16 @@ namespace Admission_Committee
                 else
                 {
                     row = (DataRowView)statementsDataGrid.SelectedItem;
-                    string sqlQuery = "SELECT Аб.*, Ат.Количество_оценок_пять, АТ.Количество_оценок_четыре, Ат.Количество_оценок_три, Ат.Изучаемый_иностранный_язык, " +
+                    sqlQuery = "SELECT Аб.*, Ат.Количество_оценок_пять, АТ.Количество_оценок_четыре, Ат.Количество_оценок_три, Ат.Изучаемый_иностранный_язык, " +
                                   "З.Код_специальности, З.Уровень_образования, З.Вариант_обучения, З.Форма_обучения FROM Абитуриенты Аб " +
                                   "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
                                   "INNER JOIN Заявления_на_поступление З ON З.Серия_паспорта = Аб.Серия_паспорта AND З.Номер_паспорта = Аб.Номер_паспорта " +
                                    $"WHERE Аб.Серия_паспорта = {row[4]} AND Аб.Номер_паспорта = {row[5]}";
 
                     dataBase.OpenConnection();
-                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+                    adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
 
-                    DataSet ds = new DataSet();
+                    ds = new DataSet();
 
                     adapter.Fill(ds);
 
@@ -314,8 +315,8 @@ namespace Admission_Committee
 
                 ApplicentsDetailsWindow aplWin = new ApplicentsDetailsWindow(row);
 
-                aplWin.ShowDialog();
-                RefreshDataGrid();
+                if (aplWin.ShowDialog() == true)
+                    RefreshDataGrids();
             }
             else
             {
@@ -324,7 +325,7 @@ namespace Admission_Committee
             }
         }
 
-        private void tabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             switch (tabControl.SelectedIndex)
             {

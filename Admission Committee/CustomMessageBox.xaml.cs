@@ -45,7 +45,7 @@ namespace Admission_Committee
         {
             if (windowType == "Удаление")
             {
-                this.DialogResult = true;
+                DialogResult = true;
                 Close();
             }
             else if (windowType == "Подтверждение выхода")

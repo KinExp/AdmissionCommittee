@@ -20,17 +20,19 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.3*"></RowDefinition>
                 <RowDefinition Height="0.35*"></RowDefinition>
-                <RowDefinition Height="2.2*"></RowDefinition>
                 <RowDefinition Height="0.3*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="0.53*"></RowDefinition>
+                <RowDefinition Height="1.9*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+                <RowDefinition Height="1.08*"></RowDefinition>
+                <RowDefinition Height="0.45*"></RowDefinition>
                 <RowDefinition Height="0.28*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.6*"/>
                 <ColumnDefinition Width="3.8*"/>
-                <ColumnDefinition Width="4.6*"/>
+                <ColumnDefinition Width="2.3*"/>
+                <ColumnDefinition Width="2.3*"/>
                 <ColumnDefinition Width="0.3*"/>
                 <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition Width="0.2*"/>
@@ -42,18 +44,21 @@
             <Image Source="Resources/логотип.png" Grid.Row="1" Grid.Column="1" Stretch="Uniform" 
                    HorizontalAlignment="Left" VerticalAlignment="Top" MouseLeftButtonDown="Window_MouseLeftButtonDown"/>
             <Image Source="Resources/закрыть.png"  Stretch="Uniform"  HorizontalAlignment="Right"
-                   Grid.Row="1" Grid.Column="6" VerticalAlignment="Top" MouseLeftButtonDown="CloseImage_MouseLeftButtonDown" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"
+                   Grid.Row="1" Grid.Column="7" VerticalAlignment="Top" MouseLeftButtonDown="CloseImage_MouseLeftButtonDown" MouseLeftButtonUp="CloseImage_MouseLeftButtonUp"
                    Height="25" Width="25" Margin="0,5,5,0" Cursor="Hand"/>
-            <Image Source="Resources/обновить.png" Grid.Row="3" Grid.Column="6" Grid.ColumnSpan="2" MouseLeftButtonUp="RefreshImage_MouseLeftButtonUp" Cursor="Hand"/>
-            <Image Source="Resources/Полный экран.png" x:Name="MaxButton" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
+            <Image Source="Resources/обновить.png" Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="2" MouseLeftButtonUp="RefreshImage_MouseLeftButtonUp" Cursor="Hand"/>
+            <Image Source="Resources/Полный экран.png" x:Name="MaxButton" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
                    Height="29" Width="29" Margin="0,3,3,0" MouseLeftButtonUp="FullScreenImage_MouseLeftButtonUp" Cursor="Hand"/>
-            <Image Source="Resources/Уменьшить.png" x:Name="MinButton" Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
+            <Image Source="Resources/Уменьшить.png" x:Name="MinButton" Grid.Row="1" Grid.Column="5" Grid.ColumnSpan="2" VerticalAlignment="Top" HorizontalAlignment="Right"
                    Height="29" Width="29" Margin="0,3,3,0" Visibility="Hidden" MouseLeftButtonUp="MinScreenImage_MouseLeftButtonUp" Cursor="Hand"/>
-            <Image Source="Resources/Свернуть.png" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top"
+            <Image Source="Resources/Свернуть.png" Grid.Row="1" Grid.Column="4" HorizontalAlignment="Right" VerticalAlignment="Top"
                    Height="29" Width="27" Margin="0,4,5,0" MouseLeftButtonUp="CollapseImage_MouseLeftButtonUp" Cursor="Hand"/>
 
+            <TextBox x:Name="SearchTextBox" IsEnabled="False" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5,0,5,0" Style="{StaticResource roundedTextBox}" TextChanged="SearchTextBox_TextChanged"/>
+            
+            <ComboBox x:Name="SearchComboBox" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="3" Height="40"  Style="{StaticResource ComboBoxStyle}" SelectionChanged="SearchComboBox_TextChanged"/>
 
-            <TabControl x:Name="tabControl" BorderBrush="White" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="3" SelectionChanged="TabControl_SelectionChanged">
+            <TabControl x:Name="tabControl" BorderBrush="White" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="3" SelectionChanged="TabControl_SelectionChanged">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
                     <DataGrid x:Name="applicantsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
                         <DataGrid.Resources>
@@ -71,7 +76,7 @@
                             <DataGridTextColumn Header="Дата рождения" Width="95*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Birthday}"/>
                             <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding Address}"/>
                             <DataGridTextColumn Header="Номер телефона" Width="115*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Phone}"/>
-                            <DataGridTextColumn Header="Название школы" Width="200*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding School}"/>
+                            <DataGridTextColumn Header="Название учебного заведения" Width="200*" ElementStyle="{StaticResource WrapText}" IsReadOnly="True" CanUserResize="False" Binding="{Binding School}"/>
                             <DataGridTextColumn Header="Год окончания" Width="95*" IsReadOnly="True" CanUserResize="False" Binding="{Binding YearGraduation}"/>
                             <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding СertificateSiries}"/>
                             <DataGridTextColumn Width="0" IsReadOnly="True" Visibility="Hidden" CanUserResize="False" Binding="{Binding СertificateNumber}"/>
@@ -122,14 +127,14 @@
                 </TabItem>
             </TabControl>
 
-            <Viewbox Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1">
+            <Viewbox Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3">
                 <Grid Width="406">
                     <Button x:Name="changeButton" Template ="{StaticResource roundedButton}"
-                        Content="Изменить" Height="40" Width="120" Margin="148,0,138,0" Click="ChangeButton_Click"/>
+                        Content="Изменить" Width="120" Margin="148,5,138,0" Click="ChangeButton_Click"/>
                     <Button x:Name="deleteButton" Template ="{StaticResource roundedButton}"
-                        Content="Удалить" Height="40" Width="120" Margin="286,0,0,0" Click="DeleteButton_Click"/>
+                        Content="Удалить"  Width="120" Margin="286,5,0,0" Click="DeleteButton_Click"/>
                     <Button x:Name="addButton" Template ="{StaticResource roundedButton}"
-                         Content="Добавить" Height="40" Width="120" Margin="10,0,276,0" Click="AddButton_Click"/>
+                         Content="Добавить" Width="120" Margin="10,5,276,0" Click="AddButton_Click"/>
                 </Grid>
             </Viewbox>
         </Grid>

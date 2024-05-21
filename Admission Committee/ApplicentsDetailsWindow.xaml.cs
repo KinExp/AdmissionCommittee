@@ -147,9 +147,42 @@ namespace Admission_Committee
                     && personalSecondPage.optionEducationComboBox.Text != string.Empty
                     && personalSecondPage.formEducationComboBox.Text != string.Empty)
                 {
-                    if (personalInfo == null)
+                    if (CheckExistenceSpecialty())
                     {
-                        string sqlQueryCertificate = "INSERT INTO Аттестаты (Серия_аттестата, Номер_аттестата, Количество_оценок_пять, " +
+                        if (personalInfo == null)
+                        {
+                            AddNewStatement();
+
+                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление добавлено!", "Ошибка");
+                            message.ShowDialog();
+                        }
+                        else
+                        {
+                            ChangeStatement();
+
+                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление изменено!", "Ошибка");
+                            message.ShowDialog();
+                        }
+
+                        Close();
+                    }
+                    else
+                    {
+                        CustomMessageBox error = new CustomMessageBox("Ошибка", "Нет такой специальности!", "Ошибка");
+                        error.ShowDialog();
+                    }
+                }
+                else
+                {
+                    CustomMessageBox error = new CustomMessageBox("Ошибка", "Не все поля заполнены!", "Ошибка");
+                    error.ShowDialog();
+                }
+            }
+        }
+
+        private void AddNewStatement()
+        {
+            string sqlQueryCertificate = "INSERT INTO Аттестаты (Серия_аттестата, Номер_аттестата, Количество_оценок_пять, " +
                                                      "Количество_оценок_четыре, Количество_оценок_три, Изучаемый_иностранный_язык) VALUES " +
                                                      $"({certificatePage.seriesOfSchoolCertificateTextBox.Text}, " +
                                                      $"{certificatePage.numberOfSchoolCertificateTextBox.Text}, " +
@@ -158,65 +191,63 @@ namespace Admission_Committee
                                                      $"{certificatePage.countOfTriplesTextBox.Text}, " +
                                                      $"\'{certificatePage.targetLanguageTextBox.Text}\');";
 
-                        int gender = 0;
-                        if (personalFirstPage.maleButton.IsChecked.Value)
-                            gender = 1;
+            int gender = 0;
+            if (personalFirstPage.maleButton.IsChecked.Value)
+                gender = 1;
 
-                        string sqlQueryApplicent = "INSERT INTO Абитуриенты (Серия_паспорта, Номер_паспорта, Фамилия, Имя, Отчество, Пол, " +
-                                                   "Дата_рождения, Адрес_по_прописке, Телефон, Название_учебного_заведения, Год_окончания_учебного_заведения, " +
-                                                   "Серия_аттестата, Номер_аттестата) VALUES " +
-                                                   $"({personalFirstPage.seriesOfPassportTextBox.Text}, " +
-                                                   $"{personalFirstPage.numberOfPassportTextBox.Text}, " +
-                                                   $"\'{personalFirstPage.lastNameTextBox.Text}\', " +
-                                                   $"\'{personalFirstPage.firstNameTextBox.Text}\', " +
-                                                   $"\'{personalFirstPage.middleNameTextBox.Text}\', " +
-                                                   $"{gender}, " +
-                                                   $"\'{personalFirstPage.birthdayDatePicker.Text}\', " +
-                                                   $"\'{personalSecondPage.addressTextBox.Text}\', " +
-                                                   $"\'{personalSecondPage.phoneTextBox.Text}\', " +
-                                                   $"\'{personalSecondPage.schoolTextBox.Text}\', " +
-                                                   $"{personalSecondPage.yearGraduationTextBox.Text}, " +
-                                                   $"{certificatePage.seriesOfSchoolCertificateTextBox.Text}, " +
-                                                   $"{certificatePage.numberOfSchoolCertificateTextBox.Text})";
+            string sqlQueryApplicent = "INSERT INTO Абитуриенты (Серия_паспорта, Номер_паспорта, Фамилия, Имя, Отчество, Пол, " +
+                                       "Дата_рождения, Адрес_по_прописке, Телефон, Название_учебного_заведения, Год_окончания_учебного_заведения, " +
+                                       "Серия_аттестата, Номер_аттестата) VALUES " +
+                                       $"({personalFirstPage.seriesOfPassportTextBox.Text}, " +
+                                       $"{personalFirstPage.numberOfPassportTextBox.Text}, " +
+                                       $"\'{personalFirstPage.lastNameTextBox.Text}\', " +
+                                       $"\'{personalFirstPage.firstNameTextBox.Text}\', " +
+                                       $"\'{personalFirstPage.middleNameTextBox.Text}\', " +
+                                       $"{gender}, " +
+                                       $"\'{personalFirstPage.birthdayDatePicker.Text}\', " +
+                                       $"\'{personalSecondPage.addressTextBox.Text}\', " +
+                                       $"\'{personalSecondPage.phoneTextBox.Text}\', " +
+                                       $"\'{personalSecondPage.schoolTextBox.Text}\', " +
+                                       $"{personalSecondPage.yearGraduationTextBox.Text}, " +
+                                       $"{certificatePage.seriesOfSchoolCertificateTextBox.Text}, " +
+                                       $"{certificatePage.numberOfSchoolCertificateTextBox.Text})";
 
-                        string IdSpecialization = "";
-                        foreach (DataRow row in specializations.Rows)
-                        {
-                            if (row.ItemArray[1].ToString() == personalSecondPage.nameSpecializationComboBox.Text)
-                            {
-                                IdSpecialization = row.ItemArray[0].ToString();
-                                break;
-                            }
-                        }
+            string IdSpecialization = "";
+            foreach (DataRow row in specializations.Rows)
+            {
+                if (row.ItemArray[1].ToString() == personalSecondPage.nameSpecializationComboBox.Text)
+                {
+                    IdSpecialization = row.ItemArray[0].ToString();
+                    break;
+                }
+            }
 
-                        string sqlQueryStatements = "INSERT INTO Заявления_на_поступление (Серия_паспорта, Номер_паспорта, Код_специальности, " +
-                                                    "Уровень_образования, Вариант_обучения, Форма_обучения) VALUES " +
-                                                    $"({personalFirstPage.seriesOfPassportTextBox.Text}, " +
-                                                    $"{personalFirstPage.numberOfPassportTextBox.Text}, " +
-                                                    $"\'{IdSpecialization}\', " +
-                                                    $"\'{personalSecondPage.levelEducationComboBox.Text}\', " +
-                                                    $"\'{personalSecondPage.optionEducationComboBox.Text}\', " +
-                                                    $"\'{personalSecondPage.formEducationComboBox.Text}\');";
+            string sqlQueryStatements = "INSERT INTO Заявления_на_поступление (Серия_паспорта, Номер_паспорта, Код_специальности, " +
+                                        "Уровень_образования, Вариант_обучения, Форма_обучения) VALUES " +
+                                        $"({personalFirstPage.seriesOfPassportTextBox.Text}, " +
+                                        $"{personalFirstPage.numberOfPassportTextBox.Text}, " +
+                                        $"\'{IdSpecialization}\', " +
+                                        $"\'{personalSecondPage.levelEducationComboBox.Text}\', " +
+                                        $"\'{personalSecondPage.optionEducationComboBox.Text}\', " +
+                                        $"\'{personalSecondPage.formEducationComboBox.Text}\');";
 
-                        dataBase.OpenConnection();
+            dataBase.OpenConnection();
 
-                        SqlCommand command = new SqlCommand(sqlQueryCertificate, dataBase.GetConnection());
-                        command.ExecuteNonQuery();
+            SqlCommand command = new SqlCommand(sqlQueryCertificate, dataBase.GetConnection());
+            command.ExecuteNonQuery();
 
-                        command = new SqlCommand(sqlQueryApplicent, dataBase.GetConnection());
-                        command.ExecuteNonQuery();
+            command = new SqlCommand(sqlQueryApplicent, dataBase.GetConnection());
+            command.ExecuteNonQuery();
 
-                        command = new SqlCommand(sqlQueryStatements, dataBase.GetConnection());
-                        command.ExecuteNonQuery();
+            command = new SqlCommand(sqlQueryStatements, dataBase.GetConnection());
+            command.ExecuteNonQuery();
 
-                        dataBase.CloseConnection();
+            dataBase.CloseConnection();
+        }
 
-                        ConfirmDeleteWindow error = new ConfirmDeleteWindow("Успех", "Заявление добавлено!", "Ошибка");
-                        error.ShowDialog();
-                    }
-                    else
-                    {
-                        string sqlQueryCertificate = "UPDATE Аттестаты SET " +
+        private void ChangeStatement()
+        {
+            string sqlQueryCertificate = "UPDATE Аттестаты SET " +
                                                      $"Количество_оценок_пять = {certificatePage.countOfFivesTextBox.Text}, " +
                                                      $"Количество_оценок_четыре = {certificatePage.countOfFoursTextBox.Text}, " +
                                                      $"Количество_оценок_три = {certificatePage.countOfTriplesTextBox.Text}, " +
@@ -224,66 +255,73 @@ namespace Admission_Committee
                                                      $"WHERE Серия_аттестата = {certificatePage.seriesOfSchoolCertificateTextBox.Text} " +
                                                      $"AND Номер_аттестата = {certificatePage.numberOfSchoolCertificateTextBox.Text}";
 
-                        int gender = 0;
-                        if (personalFirstPage.maleButton.IsChecked.Value)
-                            gender = 1;
+            int gender = 0;
+            if (personalFirstPage.maleButton.IsChecked.Value)
+                gender = 1;
 
-                        string sqlQueryApplicent = "UPDATE Абитуриенты SET " +
-                                                   $"Фамилия = \'{personalFirstPage.lastNameTextBox.Text}\', " +
-                                                   $"Имя = \'{personalFirstPage.firstNameTextBox.Text}\', " +
-                                                   $"Отчество = \'{personalFirstPage.middleNameTextBox.Text}\', " +
-                                                   $"Пол = {gender}, " +
-                                                   $"Дата_рождения = \'{personalFirstPage.birthdayDatePicker.Text}\', " +
-                                                   $"Адрес_по_прописке = \'{personalSecondPage.addressTextBox.Text}\', " +
-                                                   $"Телефон = \'{personalSecondPage.phoneTextBox.Text}\', " +
-                                                   $"Название_учебного_заведения = \'{personalSecondPage.schoolTextBox.Text}\', " +
-                                                   $"Год_окончания_учебного_заведения = {personalSecondPage.yearGraduationTextBox.Text} " +
-                                                   $"WHERE Серия_паспорта = {personalFirstPage.seriesOfPassportTextBox.Text} " +
-                                                   $"AND Номер_паспорта = {personalFirstPage.numberOfPassportTextBox.Text}";
+            string sqlQueryApplicent = "UPDATE Абитуриенты SET " +
+                                       $"Фамилия = \'{personalFirstPage.lastNameTextBox.Text}\', " +
+                                       $"Имя = \'{personalFirstPage.firstNameTextBox.Text}\', " +
+                                       $"Отчество = \'{personalFirstPage.middleNameTextBox.Text}\', " +
+                                       $"Пол = {gender}, " +
+                                       $"Дата_рождения = \'{personalFirstPage.birthdayDatePicker.Text}\', " +
+                                       $"Адрес_по_прописке = \'{personalSecondPage.addressTextBox.Text}\', " +
+                                       $"Телефон = \'{personalSecondPage.phoneTextBox.Text}\', " +
+                                       $"Название_учебного_заведения = \'{personalSecondPage.schoolTextBox.Text}\', " +
+                                       $"Год_окончания_учебного_заведения = {personalSecondPage.yearGraduationTextBox.Text} " +
+                                       $"WHERE Серия_паспорта = {personalFirstPage.seriesOfPassportTextBox.Text} " +
+                                       $"AND Номер_паспорта = {personalFirstPage.numberOfPassportTextBox.Text}";
 
-                        string IdSpecialization = "";
-                        foreach (DataRow row in specializations.Rows)
-                        {
-                            if (row.ItemArray[1].ToString() == personalSecondPage.nameSpecializationComboBox.Text)
-                            {
-                                IdSpecialization = row.ItemArray[0].ToString();
-                                break;
-                            }
-                        }
-
-                        string sqlQueryStatements = "UPDATE Заявления_на_поступление SET " +
-                                                    $"Код_специальности = \'{IdSpecialization}\', " +
-                                                    $"Уровень_образования = \'{personalSecondPage.levelEducationComboBox.Text}\', " +
-                                                    $"Вариант_обучения = \'{personalSecondPage.optionEducationComboBox.Text}\', " +
-                                                    $"Форма_обучения = \'{personalSecondPage.formEducationComboBox.Text}\' " +
-                                                    $"WHERE Серия_паспорта = {personalFirstPage.seriesOfPassportTextBox.Text} " +
-                                                    $"AND Номер_паспорта = {personalFirstPage.numberOfPassportTextBox.Text}";
-
-                        dataBase.OpenConnection();
-
-                        SqlCommand command = new SqlCommand(sqlQueryCertificate, dataBase.GetConnection());
-                        command.ExecuteNonQuery();
-
-                        command = new SqlCommand(sqlQueryApplicent, dataBase.GetConnection());
-                        command.ExecuteNonQuery();
-
-                        command = new SqlCommand(sqlQueryStatements, dataBase.GetConnection());
-                        command.ExecuteNonQuery();
-
-                        dataBase.CloseConnection();                        
-
-                        ConfirmDeleteWindow error = new ConfirmDeleteWindow("Успех", "Заявление изменено!", "Ошибка");
-                        error.ShowDialog();
-                    }
-
-                    Close();
-                }
-                else
+            string IdSpecialization = "";
+            foreach (DataRow row in specializations.Rows)
+            {
+                if (row.ItemArray[1].ToString() == personalSecondPage.nameSpecializationComboBox.Text)
                 {
-                    CustomMessageBox error = new CustomMessageBox("Ошибка", "Не все поля заполнены!", "Ошибка");
-                    error.ShowDialog();
+                    IdSpecialization = row.ItemArray[0].ToString();
+                    break;
                 }
             }
+
+            string sqlQueryStatements = "UPDATE Заявления_на_поступление SET " +
+                                        $"Код_специальности = \'{IdSpecialization}\', " +
+                                        $"Уровень_образования = \'{personalSecondPage.levelEducationComboBox.Text}\', " +
+                                        $"Вариант_обучения = \'{personalSecondPage.optionEducationComboBox.Text}\', " +
+                                        $"Форма_обучения = \'{personalSecondPage.formEducationComboBox.Text}\' " +
+                                        $"WHERE Серия_паспорта = {personalFirstPage.seriesOfPassportTextBox.Text} " +
+                                        $"AND Номер_паспорта = {personalFirstPage.numberOfPassportTextBox.Text}";
+
+            dataBase.OpenConnection();
+
+            SqlCommand command = new SqlCommand(sqlQueryCertificate, dataBase.GetConnection());
+            command.ExecuteNonQuery();
+
+            command = new SqlCommand(sqlQueryApplicent, dataBase.GetConnection());
+            command.ExecuteNonQuery();
+
+            command = new SqlCommand(sqlQueryStatements, dataBase.GetConnection());
+            command.ExecuteNonQuery();
+
+            dataBase.CloseConnection();
+        }
+
+        private bool CheckExistenceSpecialty()
+        {
+            string sqlQuery = "SELECT Название_специальности, Уровень_образования, Вариант_обучения, Форма_обучения " +
+                              "FROM Специальности WHERE " +
+                              $"Название_специальности = \'{personalSecondPage.nameSpecializationComboBox.Text}\' AND " +
+                              $"Уровень_образования = \'{personalSecondPage.levelEducationComboBox.Text}\' AND " +
+                              $"Вариант_обучения = \'{personalSecondPage.optionEducationComboBox.Text}\' AND " +
+                              $"Форма_обучения = \'{personalSecondPage.formEducationComboBox.Text}\'";
+
+            dataBase.OpenConnection();
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+            dataBase.CloseConnection();
+
+            return dt.Rows.Count > 0;
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

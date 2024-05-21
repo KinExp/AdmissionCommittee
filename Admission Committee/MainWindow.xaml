@@ -121,7 +121,7 @@
                             <DataGridTextColumn Header="Форма обучения" Width="105*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Form}"/>
                             <DataGridTextColumn Header="Количество мест" Width="105*" IsReadOnly="True" CanUserResize="False" Binding="{Binding AmountPlaces}"/>
                             <DataGridTextColumn Header="Стоимость" Width="85*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Cost}"/>
-                            <DataGridTextColumn Header="Время" Width="110*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Time}"/>
+                            <DataGridTextColumn Header="Время обучения" Width="110*" IsReadOnly="True" CanUserResize="False" Binding="{Binding Time}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>

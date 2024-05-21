@@ -81,7 +81,7 @@ namespace Admission_Committee
                 Close();
             }
             */
-            if (loginBox.Text == "admin" && passwordBox.Password == "admin")
+            if (loginBox.Text == "123" && passwordBox.Password == "123")
             {
                 MainWindow mainWindow = new MainWindow();
                 mainWindow.Show();

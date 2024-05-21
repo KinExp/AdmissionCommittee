@@ -41,7 +41,7 @@ namespace Admission_Committee
             dataSet.Tables.Add();
             dataSet.Tables.Add();
 
-            string sqlQuery = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
+            string sqlQuery = "SELECT Аб.*, Ат.Средний_балл FROM Абитуриенты Аб " +
                                         "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата";
 
             dataBase.OpenConnection();
@@ -223,7 +223,7 @@ namespace Admission_Committee
                     {
                         row = (DataRowView)statementsDataGrid.SelectedItem;
 
-                        string sqlQuery = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
+                        string sqlQuery = "SELECT Аб.*, Ат.Средний_балл FROM Абитуриенты Аб " +
                                           "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
                                           $"WHERE Серия_паспорта = {row[4]} AND Номер_паспорта = {row[5]}";
 
@@ -390,7 +390,7 @@ namespace Admission_Committee
                                 text = "1";
                         }
 
-                        string sqlQueryApplicents = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
+                        string sqlQueryApplicents = "SELECT Аб.*, Ат.Средний_балл FROM Абитуриенты Аб " +
                                                       "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
                                                       $"WHERE {SearchComboBox.Text.Replace(' ', '_')} LIKE \'{text}%\'";
 
@@ -526,6 +526,11 @@ namespace Admission_Committee
                         break;
                 }
             }
+            if (string.IsNullOrEmpty(SearchTextBox.Text))
+            {
+                RefreshDataGrids();
+            }
+
         }
 
         private void SearchComboBox_TextChanged(object sender, SelectionChangedEventArgs e)

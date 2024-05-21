@@ -89,7 +89,7 @@ namespace Admission_Committee
             }
             else
             {
-                ConfirmDeleteWindow error = new ConfirmDeleteWindow("Ошибка", "Неверный логин или пароль!", "Ошибка");
+                CustomMessageBox error = new CustomMessageBox("Ошибка", "Неверный логин или пароль!", "Ошибка");
                 error.ShowDialog();
             }
         }

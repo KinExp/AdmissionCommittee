@@ -17,10 +17,10 @@ namespace Admission_Committee
     /// <summary>
     /// Логика взаимодействия для ConfirmDeleteWindow.xaml
     /// </summary>
-    public partial class ConfirmDeleteWindow : Window
+    public partial class CustomMessageBox : Window
     {
         string windowType;
-        public ConfirmDeleteWindow(string label, string text, string type)
+        public CustomMessageBox(string label, string text, string type)
         {
             InitializeComponent();
 
@@ -32,7 +32,8 @@ namespace Admission_Committee
             {
                 confirmButton.Visibility = Visibility.Hidden;
                 cancelButton.Content = "ОК";
-            }                
+            }
+            // Уведомление(Успех!)
         }
 
         private void cancelDelete_Click(object sender, RoutedEventArgs e)
@@ -50,7 +51,8 @@ namespace Admission_Committee
             else if (windowType == "Подтверждение выхода")
             {
                 Application.Current.Shutdown();
-            }    
+            }
+            // Отмена изменений
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

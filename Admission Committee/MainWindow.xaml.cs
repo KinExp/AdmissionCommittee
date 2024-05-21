@@ -160,7 +160,11 @@ namespace Admission_Committee
         {
             ApplicentsDetailsWindow aplWin = new ApplicentsDetailsWindow();
 
-            aplWin.ShowDialog();
+            if (aplWin.ShowDialog() == true)
+            {
+                RefreshDataGrid();
+            }
+
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -176,7 +180,11 @@ namespace Admission_Committee
         private void CloseImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (exit)
-                Close();
+            {
+                CustomMessageBox question = new CustomMessageBox("Подтверждение", "Вы действительно хотите выйти?", "Подтверждение выхода");
+                question.ShowDialog();
+            }
+                
         }
 
         private void CollapseImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -203,7 +211,7 @@ namespace Admission_Committee
             if (applicantsDataGrid.SelectedItem != null || statementsDataGrid.SelectedItem != null)
             {
 
-                ConfirmDeleteWindow deleteWindow = new ConfirmDeleteWindow("Удаление", "Вы действительно хотите удалить запись?", "Удаление");
+                CustomMessageBox deleteWindow = new CustomMessageBox("Удаление", "Вы действительно хотите удалить запись?", "Удаление");
 
                 if (deleteWindow.ShowDialog() == true)
                 {
@@ -250,8 +258,14 @@ namespace Admission_Committee
                     commandApplicant = new SqlCommand(sqlQueryApplicant, dataBase.GetConnection());
                     commandApplicant.ExecuteNonQuery();
                     dataBase.CloseConnection();
+
                     RefreshDataGrid();
                 }
+            }
+            else
+            {
+                CustomMessageBox error = new CustomMessageBox("Ошибка", "Строка не выбрана", "Ошибка");
+                error.ShowDialog();
             }
         }
 
@@ -283,7 +297,7 @@ namespace Admission_Committee
                 {
                     row = (DataRowView)statementsDataGrid.SelectedItem;
                     string sqlQuery = "SELECT Аб.*, Ат.Количество_оценок_пять, АТ.Количество_оценок_четыре, Ат.Количество_оценок_три, Ат.Изучаемый_иностранный_язык, " +
-                                  "З.Код_специальности, З.Уровень_образования, З.Вариант_обучения, З.Форма_обученияFROM Абитуриенты Аб " +
+                                  "З.Код_специальности, З.Уровень_образования, З.Вариант_обучения, З.Форма_обучения FROM Абитуриенты Аб " +
                                   "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
                                   "INNER JOIN Заявления_на_поступление З ON З.Серия_паспорта = Аб.Серия_паспорта AND З.Номер_паспорта = Аб.Номер_паспорта " +
                                    $"WHERE Аб.Серия_паспорта = {row[4]} AND Аб.Номер_паспорта = {row[5]}";
@@ -301,6 +315,12 @@ namespace Admission_Committee
                 ApplicentsDetailsWindow aplWin = new ApplicentsDetailsWindow(row);
 
                 aplWin.ShowDialog();
+                RefreshDataGrid();
+            }
+            else
+            {
+                CustomMessageBox error = new CustomMessageBox("Ошибка", "Строка не выбрана", "Ошибка");
+                error.ShowDialog();
             }
         }
 

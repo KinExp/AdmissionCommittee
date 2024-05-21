@@ -91,12 +91,12 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ConfirmDeleteWindow.xaml">
+    <Page Include="CustomMessageBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="ConfirmDeleteWindow.xaml.cs">
-      <DependentUpon>ConfirmDeleteWindow.xaml</DependentUpon>
+    <Compile Include="CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PersonalDataFirstPage.xaml">

@@ -174,7 +174,7 @@ namespace Admission_Committee
                 }
                 else
                 {
-                    ConfirmDeleteWindow error = new ConfirmDeleteWindow("Ошибка", "Не все поля заполнены!", "Ошибка");
+                    CustomMessageBox error = new CustomMessageBox("Ошибка", "Не все поля заполнены!", "Ошибка");
                     error.ShowDialog();
                 }
             }

@@ -262,14 +262,31 @@ namespace Admission_Committee
                 DataRowView row;
 
                 if (tabControl.SelectedIndex == 0)
+                {
                     row = (DataRowView)applicantsDataGrid.SelectedItem;
+                    string sqlQuery = "SELECT Аб.*, Ат.Количество_оценок_пять, АТ.Количество_оценок_четыре, Ат.Количество_оценок_три, Ат.Изучаемый_иностранный_язык, " +
+                                  "З.Код_специальности, З.Уровень_образования, З.Вариант_обучения, З.Форма_обучения FROM Абитуриенты Аб " +
+                                  "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
+                                  "INNER JOIN Заявления_на_поступление З ON З.Серия_паспорта = Аб.Серия_паспорта AND З.Номер_паспорта = Аб.Номер_паспорта " +
+                                   $"WHERE Аб.Серия_паспорта = {row[0]} AND Аб.Номер_паспорта = {row[1]}";
+
+                    dataBase.OpenConnection();
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());
+
+                    DataSet ds = new DataSet();
+
+                    adapter.Fill(ds);
+
+                    row = ds.Tables[0].DefaultView[0];
+                }
                 else
                 {
                     row = (DataRowView)statementsDataGrid.SelectedItem;
-
-                    string sqlQuery = "SELECT Аб.*, Ат.Средний_балл_аттестата FROM Абитуриенты Аб " +
-                                      "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
-                                      $"WHERE Серия_паспорта = {row[4]} AND Номер_паспорта = {row[5]}";
+                    string sqlQuery = "SELECT Аб.*, Ат.Количество_оценок_пять, АТ.Количество_оценок_четыре, Ат.Количество_оценок_три, Ат.Изучаемый_иностранный_язык, " +
+                                  "З.Код_специальности, З.Уровень_образования, З.Вариант_обучения, З.Форма_обученияFROM Абитуриенты Аб " +
+                                  "INNER JOIN Аттестаты Ат ON Ат.Серия_аттестата = Аб.Серия_аттестата AND Ат.Номер_аттестата = Аб.Номер_аттестата " +
+                                  "INNER JOIN Заявления_на_поступление З ON З.Серия_паспорта = Аб.Серия_паспорта AND З.Номер_паспорта = Аб.Номер_паспорта " +
+                                   $"WHERE Аб.Серия_паспорта = {row[4]} AND Аб.Номер_паспорта = {row[5]}";
 
                     dataBase.OpenConnection();
                     SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, dataBase.GetConnection());

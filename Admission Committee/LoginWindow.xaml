@@ -101,7 +101,8 @@
                          Grid.RowSpan="2"
                          HorizontalAlignment="Center"
                          VerticalAlignment="Center"
-                         LostFocus="passwordBox_LostFocus"/>
+                         LostFocus="passwordBox_LostFocus"
+                         KeyUp="Enter_PasswordBox"/>
 
             <TextBox x:Name="fakePasswordBox"
                      Style="{StaticResource roundedTextBox}"

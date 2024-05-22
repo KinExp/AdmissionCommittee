@@ -10,19 +10,21 @@
         Width="400"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        KeyUp="Enter_windowText">
     <Grid Background="#FF650E">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.3*"/>
-                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="0.2*"/>
                 <RowDefinition Height="0.4*"/>
+                <RowDefinition Height="0.3*"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
                 <ColumnDefinition Width="0.5*"/>
             </Grid.ColumnDefinitions>
+            
 
             <Label x:Name="windowLabel"
                    Style="{StaticResource basicText}"

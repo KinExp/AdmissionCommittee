@@ -58,21 +58,19 @@ namespace Admission_Committee
         private void passwordBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (passwordBox.Password.ToString() == "")
-                fakePasswordBox.Visibility= Visibility.Visible;
+                fakePasswordBox.Visibility = Visibility.Visible;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Autorization()
         {
-            /*
             string loginQuerry = $"select * from Авторизация " +
                                  $"where Логин = '{loginBox.Text}' " +
                                  $"and Пароль = '{passwordBox.Password}'";
 
             SqlDataAdapter adapter = new SqlDataAdapter(loginQuerry, dataBase.GetConnection());
             DataTable dataTable = new DataTable();
-            
+
             adapter.Fill(dataTable);
-            
 
             if (dataTable.Rows.Count == 1)
             {
@@ -80,23 +78,28 @@ namespace Admission_Committee
                 mainWindow.Show();
                 Close();
             }
-            */
-            if (loginBox.Text == "123" && passwordBox.Password == "123")
-            {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                Close();
-            }
             else
             {
-                CustomMessageBox error = new CustomMessageBox("Ошибка", "Неверный логин или пароль!", "Ошибка");
+                CustomMessageBox error = new CustomMessageBox("Ошибка", "Неверный логин или пароль!");
                 error.ShowDialog();
             }
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Autorization();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Enter_PasswordBox(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Autorization();
+            }
         }
     }
 }

@@ -151,14 +151,14 @@ namespace Admission_Committee
                         {
                             AddNewStatement();
 
-                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление добавлено!", "Ошибка");
+                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление добавлено!");
                             message.ShowDialog();
                         }
                         else
                         {
                             ChangeStatement();
 
-                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление изменено!", "Ошибка");
+                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление изменено!");
                             message.ShowDialog();
                         }
 
@@ -167,13 +167,13 @@ namespace Admission_Committee
                     }
                     else
                     {
-                        CustomMessageBox error = new CustomMessageBox("Ошибка", "Нет такой специальности!", "Ошибка");
+                        CustomMessageBox error = new CustomMessageBox("Ошибка", "Нет такой специальности!");
                         error.ShowDialog();
                     }
                 }
                 else
                 {
-                    CustomMessageBox error = new CustomMessageBox("Ошибка", "Не все поля заполнены!", "Ошибка");
+                    CustomMessageBox error = new CustomMessageBox("Ошибка", "Не все поля заполнены!");
                     error.ShowDialog();
                 }
             }
@@ -199,7 +199,7 @@ namespace Admission_Committee
                 gender = 1;
 
             sqlQuery = "INSERT INTO Абитуриенты (Серия_паспорта, Номер_паспорта, Фамилия, Имя, Отчество, Пол, " +
-                       "Дата_рождения, Адрес_по_прописке, Телефон, Название_учебного_заведения, Год_окончания_учебного_заведения, " +
+                       "Дата_рождения, Адрес_по_прописке, Номер_телефона, Название_учебного_заведения, Год_окончания, " +
                        "Серия_аттестата, Номер_аттестата) VALUES " +
                        $"({personalFirstPage.seriesOfPassportTextBox.Text}, " +
                        $"{personalFirstPage.numberOfPassportTextBox.Text}, " +
@@ -267,9 +267,9 @@ namespace Admission_Committee
                        $"Пол = {gender}, " +
                        $"Дата_рождения = \'{personalFirstPage.birthdayDatePicker.Text}\', " +
                        $"Адрес_по_прописке = \'{personalSecondPage.addressTextBox.Text}\', " +
-                       $"Телефон = \'{personalSecondPage.phoneTextBox.Text}\', " +
+                       $"Номер_телефона = \'{personalSecondPage.phoneTextBox.Text}\', " +
                        $"Название_учебного_заведения = \'{personalSecondPage.schoolTextBox.Text}\', " +
-                       $"Год_окончания_учебного_заведения = {personalSecondPage.yearGraduationTextBox.Text} " +
+                       $"Год_окончания = {personalSecondPage.yearGraduationTextBox.Text} " +
                        $"WHERE Серия_паспорта = {personalFirstPage.seriesOfPassportTextBox.Text} " +
                        $"AND Номер_паспорта = {personalFirstPage.numberOfPassportTextBox.Text}";
 

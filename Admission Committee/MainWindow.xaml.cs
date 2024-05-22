@@ -181,7 +181,7 @@ namespace Admission_Committee
         {
             if (exit)
             {
-                CustomMessageBox question = new CustomMessageBox("Подтверждение", "Вы действительно хотите выйти?", "Подтверждение выхода");
+                CustomMessageBox question = new CustomMessageBox("Подтверждение", "Вы действительно хотите выйти?");
                 question.ShowDialog();
             }
 
@@ -211,7 +211,7 @@ namespace Admission_Committee
             if (applicantsDataGrid.SelectedItem != null || statementsDataGrid.SelectedItem != null)
             {
 
-                CustomMessageBox deleteWindow = new CustomMessageBox("Удаление", "Вы действительно хотите удалить запись?", "Удаление");
+                CustomMessageBox deleteWindow = new CustomMessageBox("Удаление", "Вы действительно хотите удалить запись?");
 
                 if (deleteWindow.ShowDialog() == true)
                 {
@@ -264,7 +264,7 @@ namespace Admission_Committee
             }
             else
             {
-                CustomMessageBox error = new CustomMessageBox("Ошибка", "Строка не выбрана", "Ошибка");
+                CustomMessageBox error = new CustomMessageBox("Ошибка", "Строка не выбрана");
                 error.ShowDialog();
             }
         }
@@ -322,7 +322,7 @@ namespace Admission_Committee
             }
             else
             {
-                CustomMessageBox error = new CustomMessageBox("Ошибка", "Строка не выбрана", "Ошибка");
+                CustomMessageBox error = new CustomMessageBox("Ошибка", "Строка не выбрана");
                 error.ShowDialog();
             }
         }

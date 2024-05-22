@@ -19,21 +19,21 @@ namespace Admission_Committee
     /// </summary>
     public partial class CustomMessageBox : Window
     {
-        string windowType;
-        public CustomMessageBox(string label, string text, string type)
+        bool notification;
+        public CustomMessageBox(string label, string text, bool isNotification = false)
         {
             InitializeComponent();
 
             windowLabel.Content = label;
             windowText.Content = text;
-            windowType = type;
+            notification = isNotification;
 
-            if (windowType == "Ошибка")
+            if (isNotification)
             {
                 confirmButton.Visibility = Visibility.Hidden;
                 cancelButton.Content = "ОК";
             }
-            // Уведомление(Успех!)
+            
         }
 
         private void cancelDelete_Click(object sender, RoutedEventArgs e)
@@ -43,14 +43,10 @@ namespace Admission_Committee
 
         private void confirmDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (windowType == "Удаление")
+            if (!notification)
             {
                 DialogResult = true;
                 Close();
-            }
-            else if (windowType == "Подтверждение выхода")
-            {
-                Application.Current.Shutdown();
             }
             // Отмена изменений
         }
@@ -58,6 +54,11 @@ namespace Admission_Committee
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void Enter_windowText(object sender, KeyEventArgs e)
+        {
+
         }
     }
 }

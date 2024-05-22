@@ -80,7 +80,7 @@ namespace Admission_Committee
             }
             else
             {
-                CustomMessageBox error = new CustomMessageBox("Ошибка", "Неверный логин или пароль!");
+                CustomMessageBox error = new CustomMessageBox("Ошибка", "Неверный логин или пароль!",true);
                 error.ShowDialog();
             }
         }

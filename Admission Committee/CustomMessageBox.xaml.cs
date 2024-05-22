@@ -28,12 +28,11 @@ namespace Admission_Committee
             windowText.Content = text;
             notification = isNotification;
 
-            if (isNotification)
+            if (notification)
             {
                 confirmButton.Visibility = Visibility.Hidden;
                 cancelButton.Content = "ОК";
             }
-            
         }
 
         private void cancelDelete_Click(object sender, RoutedEventArgs e)
@@ -41,14 +40,17 @@ namespace Admission_Committee
             Close();
         }
 
-        private void confirmDelete_Click(object sender, RoutedEventArgs e)
+        private void confirm()
         {
             if (!notification)
             {
                 DialogResult = true;
                 Close();
             }
-            // Отмена изменений
+        }
+        private void confirmDelete_Click(object sender, RoutedEventArgs e)
+        {
+            confirm();
         }
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -58,6 +60,18 @@ namespace Admission_Committee
 
         private void Enter_windowText(object sender, KeyEventArgs e)
         {
+            if (notification)
+            {
+                if (e.Key == Key.Enter || e.Key == Key.Escape)
+                    Close();
+            }
+            else
+            {
+                if (e.Key == Key.Enter)
+                    confirm();
+                if (e.Key == Key.Escape)
+                    Close();
+            }
 
         }
     }

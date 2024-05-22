@@ -341,6 +341,9 @@ namespace Admission_Committee
                             SearchComboBox.Items.Add(applicantsDataGrid.Columns[i].Header);
                         }
                     }
+                    addButton.Visibility = Visibility.Visible;
+                    changeButton.Visibility = Visibility.Visible;
+                    deleteButton.Visibility = Visibility.Visible;
                     break;
                 case 1:
                     SearchComboBox.Items.Clear();
@@ -351,6 +354,9 @@ namespace Admission_Committee
                             SearchComboBox.Items.Add(statementsDataGrid.Columns[i].Header);
                         }
                     }
+                    addButton.Visibility = Visibility.Visible;
+                    changeButton.Visibility = Visibility.Visible;
+                    deleteButton.Visibility = Visibility.Visible;
                     break;
                 case 2:
                     SearchComboBox.Items.Clear();
@@ -364,12 +370,6 @@ namespace Admission_Committee
                     addButton.Visibility = Visibility.Hidden;
                     changeButton.Visibility = Visibility.Hidden;
                     deleteButton.Visibility = Visibility.Hidden;
-                    break;
-                default:
-                    SearchComboBox.Items.Clear();
-                    addButton.Visibility = Visibility.Visible;
-                    changeButton.Visibility = Visibility.Visible;
-                    deleteButton.Visibility = Visibility.Visible;
                     break;
             }
         }

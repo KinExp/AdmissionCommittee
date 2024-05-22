@@ -293,7 +293,7 @@ namespace Admission_Committee
                        $"Форма_обучения = \'{personalSecondPage.formEducationComboBox.Text}\' " +
                        $"WHERE Серия_паспорта = {personalFirstPage.seriesOfPassportTextBox.Text} " +
                        $"AND Номер_паспорта = {personalFirstPage.numberOfPassportTextBox.Text}";
-                                 
+
             command = new SqlCommand(sqlQuery, dataBase.GetConnection());
             command.ExecuteNonQuery();
             dataBase.CloseConnection();
@@ -319,6 +319,76 @@ namespace Admission_Committee
             return dt.Rows.Count > 0;
         }
 
+        private void CheckEnteredInfo()
+        {
+            if (personalInfo == null)
+            {
+                if (certificatePage.numberOfSchoolCertificateTextBox.Text != string.Empty
+                    || certificatePage.seriesOfSchoolCertificateTextBox.Text != string.Empty
+                    || certificatePage.countOfFivesTextBox.Text != string.Empty
+                    || certificatePage.countOfFoursTextBox.Text != string.Empty
+                    || certificatePage.countOfTriplesTextBox.Text != string.Empty
+                    || personalFirstPage.numberOfPassportTextBox.Text != string.Empty
+                    || personalFirstPage.seriesOfPassportTextBox.Text != string.Empty
+                    || personalFirstPage.lastNameTextBox.Text != string.Empty
+                    || personalFirstPage.firstNameTextBox.Text != string.Empty
+                    || personalFirstPage.middleNameTextBox.Text != string.Empty
+                    || personalFirstPage.birthdayDatePicker.Text != string.Empty
+                    || personalSecondPage.addressTextBox.Text != string.Empty
+                    || personalSecondPage.phoneTextBox.Text != string.Empty
+                    || personalSecondPage.schoolTextBox.Text != string.Empty
+                    || personalSecondPage.yearGraduationTextBox.Text != string.Empty
+                    || personalSecondPage.nameSpecializationComboBox.Text != string.Empty
+                    || personalSecondPage.levelEducationComboBox.Text != string.Empty
+                    || personalSecondPage.optionEducationComboBox.Text != string.Empty
+                    || personalSecondPage.formEducationComboBox.Text != string.Empty)
+                {
+                    CustomMessageBox message = new CustomMessageBox("Подтверждение", "Вы действительно хотите выйти?\nВведенные данные не сохранятся");
+                    if (message.ShowDialog() == true)
+                        Close();
+                }
+                else
+                    Close();
+            }
+            else
+            {
+                if (personalFirstPage.seriesOfPassportTextBox.Text.ToString() != personalInfo[0].ToString()
+                    || personalFirstPage.numberOfPassportTextBox.Text.ToString() != personalInfo[1].ToString()
+                    || personalFirstPage.lastNameTextBox.Text.ToString() != personalInfo[2].ToString()
+                    || personalFirstPage.firstNameTextBox.Text.ToString() != personalInfo[3].ToString()
+                    || personalFirstPage.middleNameTextBox.Text.ToString() != personalInfo[4].ToString()
+                    || personalFirstPage.birthdayDatePicker.Text.ToString() != personalInfo[6].ToString().Substring(0, 10)
+                    || personalSecondPage.addressTextBox.Text.ToString() != personalInfo[7].ToString()
+                    || personalSecondPage.phoneTextBox.Text.ToString() != personalInfo[8].ToString()
+                    || personalSecondPage.schoolTextBox.Text.ToString() != personalInfo[9].ToString()
+                    || personalSecondPage.yearGraduationTextBox.Text.ToString() != personalInfo[10].ToString()
+                    || certificatePage.seriesOfSchoolCertificateTextBox.Text.ToString() != personalInfo[11].ToString()
+                    || certificatePage.numberOfSchoolCertificateTextBox.Text.ToString() != personalInfo[12].ToString()
+                    || certificatePage.countOfFivesTextBox.Text.ToString() != personalInfo[13].ToString()
+                    || certificatePage.countOfFoursTextBox.Text.ToString() != personalInfo[14].ToString()
+                    || certificatePage.countOfTriplesTextBox.Text.ToString() != personalInfo[15].ToString()
+                    || certificatePage.targetLanguageTextBox.Text.ToString() != personalInfo[16].ToString()
+                    || personalSecondPage.levelEducationComboBox.Text.ToString() != personalInfo[18].ToString()
+                    || personalSecondPage.optionEducationComboBox.Text.ToString() != personalInfo[19].ToString()
+                    || personalSecondPage.formEducationComboBox.Text.ToString() != personalInfo[20].ToString())
+                {
+                    CustomMessageBox message = new CustomMessageBox("Подтверждение", "Вы действительно хотите выйти?\nИзменённые данные не сохранятся");
+                    if (message.ShowDialog() == true)
+                        Close();
+                }
+                else
+                    Close();
+            }
+
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                CheckEnteredInfo();
+            }
+        }
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
@@ -326,7 +396,7 @@ namespace Admission_Committee
 
         private void Image_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Close();
+            CheckEnteredInfo();
         }
     }
 }

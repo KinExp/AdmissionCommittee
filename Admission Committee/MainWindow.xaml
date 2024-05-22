@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        Height="800" Width="1150"
-        MinHeight="800" MinWidth="1150">
+        Height="800"
+        Width="1150"
+        MinHeight="800"
+        MinWidth="1150"
+        KeyUp="Window_KeyUp">
     <Window.Resources>
 
     </Window.Resources>

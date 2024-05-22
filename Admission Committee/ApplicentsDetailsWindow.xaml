@@ -12,7 +12,8 @@
         Height="500"
         Width="800"
         MinHeight="500"
-        MinWidth="800">
+        MinWidth="800"
+        KeyUp="Window_KeyUp">
     <Grid>
         <Image Source="Resources/фон.png"
                Stretch="Fill"

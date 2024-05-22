@@ -182,7 +182,8 @@ namespace Admission_Committee
             if (exit)
             {
                 CustomMessageBox question = new CustomMessageBox("Подтверждение", "Вы действительно хотите выйти?");
-                question.ShowDialog();
+                if (question.ShowDialog() == true)
+                    Close();
             }
 
         }
@@ -544,6 +545,16 @@ namespace Admission_Committee
             {
                 SearchTextBox.IsEnabled = false;
                 SearchTextBox.Text = "Выберите столбец поиска";
+            }
+        }
+
+        private void Window_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                CustomMessageBox question = new CustomMessageBox("Подтверждение", "Вы действительно хотите выйти?");
+                if (question.ShowDialog() == true)
+                    Close();
             }
         }
     }

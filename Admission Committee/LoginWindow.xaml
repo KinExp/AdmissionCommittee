@@ -10,7 +10,8 @@
         WindowStartupLocation="CenterScreen"
         Height="450"
         Width="350"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        KeyUp="Enter_PasswordBox">
     <Grid Height="Auto"
           Width="Auto">
         <Image Source="Resources/фон.png"
@@ -101,8 +102,7 @@
                          Grid.RowSpan="2"
                          HorizontalAlignment="Center"
                          VerticalAlignment="Center"
-                         LostFocus="passwordBox_LostFocus"
-                         KeyUp="Enter_PasswordBox"/>
+                         LostFocus="passwordBox_LostFocus"/>
 
             <TextBox x:Name="fakePasswordBox"
                      Style="{StaticResource roundedTextBox}"

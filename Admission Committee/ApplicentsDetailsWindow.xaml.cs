@@ -151,14 +151,14 @@ namespace Admission_Committee
                         {
                             AddNewStatement();
 
-                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление добавлено!");
+                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление добавлено!", true);
                             message.ShowDialog();
                         }
                         else
                         {
                             ChangeStatement();
 
-                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление изменено!");
+                            CustomMessageBox message = new CustomMessageBox("Успех", "Заявление изменено!", true);
                             message.ShowDialog();
                         }
 
@@ -167,13 +167,13 @@ namespace Admission_Committee
                     }
                     else
                     {
-                        CustomMessageBox error = new CustomMessageBox("Ошибка", "Нет такой специальности!");
+                        CustomMessageBox error = new CustomMessageBox("Ошибка", "Нет такой специальности!", true);
                         error.ShowDialog();
                     }
                 }
                 else
                 {
-                    CustomMessageBox error = new CustomMessageBox("Ошибка", "Не все поля заполнены!");
+                    CustomMessageBox error = new CustomMessageBox("Ошибка", "Не все поля заполнены!", true);
                     error.ShowDialog();
                 }
             }

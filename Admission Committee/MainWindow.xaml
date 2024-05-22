@@ -63,7 +63,7 @@
 
             <TabControl x:Name="tabControl" BorderBrush="White" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="3" SelectionChanged="TabControl_SelectionChanged">
                 <TabItem Header="Абитуренты" Style="{StaticResource TabControlCreativeStyle}">
-                    <DataGrid x:Name="applicantsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
+                    <DataGrid x:Name="applicantsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False" CanUserDeleteRows="False">
                         <DataGrid.Resources>
                             <Style TargetType="TextBlock" x:Key="WrapText">
                                 <Setter Property="TextWrapping" Value="Wrap"/>
@@ -88,7 +88,7 @@
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Заявления" Style="{StaticResource TabControlCreativeStyle}">
-                    <DataGrid x:Name="statementsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
+                    <DataGrid x:Name="statementsDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False" CanUserDeleteRows="False">
                         <DataGrid.Resources>
                             <Style TargetType="TextBlock" x:Key="WrapText">
                                 <Setter Property="TextWrapping" Value="Wrap"/>
@@ -110,7 +110,7 @@
                     </DataGrid>
                 </TabItem>
                 <TabItem Header="Специальности" Style="{StaticResource TabControlCreativeStyle}">
-                    <DataGrid x:Name="specialtiesDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False">
+                    <DataGrid x:Name="specialtiesDataGrid" AutoGenerateColumns="False" HorizontalScrollBarVisibility="Disabled" CanUserAddRows="False" CanUserDeleteRows="False">
                         <DataGrid.Resources>
                             <Style TargetType="TextBlock" x:Key="WrapText">
                                 <Setter Property="TextWrapping" Value="Wrap"/>
